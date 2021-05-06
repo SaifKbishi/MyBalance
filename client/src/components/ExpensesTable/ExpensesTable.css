@@ -1,0 +1,50 @@
+.expensesTable{
+ display: flex; 
+ margin-bottom: 100px;
+ flex-direction: column;
+ color:ivory;
+ background: khaki; /*should delete*/
+}
+.expensesTable >small{
+ /* width: calc(100vw / 12); */
+ width:210px;
+ border: 1px solid black;
+ padding: 2px;
+}
+
+.expDetails{
+ flex-direction: column;
+}
+
+.expName{
+ text-align: left;
+ width:130px;
+ float: left;
+}
+.expAmount{
+ text-align: right;
+ width:50px;
+ float: right;
+}
+
+.expensesTable .expensesItems{
+ display: flex;
+ justify-content: space-between;
+}
+.expensesItems span{
+ padding: 0 7px;
+}
+.deleteExpItem:hover{
+ cursor: pointer;
+}
+.income{
+ background: green;
+}
+.expense{
+ background: red;
+}
+a, a:visited{
+ color: inherit !important;
+ text-decoration: none;
+ text-decoration-color: none;
+}
