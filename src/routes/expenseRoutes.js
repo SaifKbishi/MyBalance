@@ -36,6 +36,7 @@ router.get('/viewbymonth/:id',async (req, res)=>{
   res.status(400).send(error);
  }
 });
+
 //retrive by expense ID             //READ
 router.get('/getExpenseByID/:id',async (req, res)=>{
  try{
@@ -47,16 +48,18 @@ router.get('/getExpenseByID/:id',async (req, res)=>{
  }
 });
 
-//update by month ID              //update
+//update by  ID              //update
 router.patch('/updateExpense/:id',async (req, res)=>{ 
  try{
   const exp1 = await Expense.findByIdAndUpdate(req.params.id, req.body); 
+  console.log('55',req.params.id, req.body)
   if(!exp1){
    console.log('could not find that month')
    return res.status(404).send();
   }
   console.log('cool, updating something')
-  res.status(201).send(exp1);
+  // res.status(201).send(exp1);
+  res.send(exp1);
  }catch(error){
   console.log('could not complete the update');
   res.status(400).send(error);
@@ -100,21 +103,5 @@ router.delete('/deleteExpense/:id',async (req, res)=>{
  }
 });
 
-
-//delete a month
-
-
-/*
-router.XXXX('/XXXX/',async (req, res)=>{
- try{
-  const XXXX = await ExpenseMonth.XXXX({});
-  res.status(XXXX).send(XXXX);
- }catch(error){
-  console.log('could not XXXX');
-  res.status(400).send(error);
- }
-});
-
-*/
 
 module.exports = router;

@@ -4,7 +4,7 @@ import ExpenseForm from '../ExpenseForm/ExpenseForm'
 import ExpensesTable from '../ExpensesTable/ExpensesTable'
 // import ExpenseEdit from '../ExpenseEdit/ExpenseEdit'
 
-const Home=()=>{
+const Home=(props)=>{
  return(
   <div className="homepage">
    <ExpenseForm/>

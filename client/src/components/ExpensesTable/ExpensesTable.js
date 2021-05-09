@@ -4,9 +4,7 @@ import './ExpensesTable.css';
 import { Link } from 'react-router-dom';
 
 
-const ExpensesTable =()=>{
- // const initialState = {Name:'', amount:0, Description:'', Repeats:0 };
- // const [expense, setExpense] = useState(initialState);
+const ExpensesTable =(props)=>{
  const [expense, setExpense] = useState([]);
 
  useEffect(()=>{
@@ -35,27 +33,18 @@ const ExpensesTable =()=>{
 
  const handleEdit = async (id)=>{
   const expToEdit = id;
-  console.log('editing', expToEdit);
-  /** */
    const getItemToEdit = async ()=>{
     try{
-     // const response = await axios.get(`/exp/getExpenseByID/${expToEdit}`);
-     // console.log('43 ExpensesTable response data:',response.data)
-     // <ExpenseEdit dataFromExpensesTable={response.data}/>
-     // setExpense(response.data);
+     const response = await axios.get(`/exp/getExpenseByID/${expToEdit}`);
+     console.log('43 ExpensesTable response data:',response.data);
     }catch(error){console.log('could not fetch item', error)}
    }
    getItemToEdit();
-  /** */
-  // try{
-  //  await axios.patch(`/exp/updateExpense/${expToEdit}`);
-  // }catch(error){console.log('error updating item', error)}
  }//handleEdit
 
- return(  
+ return(
   <div>
-   <div className="expensesTable">{expense.map((expItem)=>{
-    
+   <div className="expensesTable">{expense.map((expItem)=>{    
     return(
      <React.Fragment key={expItem._id}>
       {/* <small onClick={<ExpenseEdit dataFromExpensesTable={expItem._id}/>} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}> */}
@@ -72,8 +61,3 @@ const ExpensesTable =()=>{
 }//ExpensesTable
 
 export default ExpensesTable;
-
-/**   {
-          _id: 0,
-          date2: { $month: "$date" }
-    } */

@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from './components/pages/Home'
 import Navigation from './components/Navigation/Navigation'
+import Main from './components/Main'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import './normalize.css';
@@ -18,6 +19,7 @@ function App() {
         <h1>My Balance</h1>
         <hr/>
         <Home />
+        <Main />
       </div>
       </Router>  
     </div>

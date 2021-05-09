@@ -1,16 +1,18 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios'; 
 import './ExpenseEdit.css';
+// import ExpensesTable from '../ExpensesTable/ExpensesTable'
 
 const ExpenseEdit=(props)=>{
  const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
  const [expense, setExpense] = useState(initialState);
 
  useEffect( ()=>{
-   console.log('10 ExpenseEdit: ',props)
+   console.log('EE 10 ExpenseEdit: ',props)
   const getExpenseItem = async ()=>{
    try{
-    const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);
+     console.log('props.match.params._id:', props.match.params._id)
+    const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
     console.log('13 edit', response.data);
     setExpense(response.data);
    }catch(error){console.log('error editing: ', error)}
@@ -18,30 +20,32 @@ const ExpenseEdit=(props)=>{
   getExpenseItem();
  },[]);
 
-
  const handleChange = (e)=>{
-  console.log('10',e.target.name,'value:', e.target.value, '     ',e.target);
+  console.log('EE 10',e.target.name,'value:', e.target.value, '     ',e.target);
   setExpense({...expense,[e.target.name]:e.target.value});
-  console.log('12',expense)  
+  console.log('12',expense);
  }
 
- const handleSubmit=(e)=>{
-  console.log('handleSubmit 5');
-   e.preventDefault();
-  //  if(!expense.name || !expense.amount || !expense.date ) return;   
+ const handleEditSubmit=(e)=>{
+  console.log('handleEditSubmit 29');
+  //  e.preventDefault();
+   if(!expense.name || !expense.amount ) return;   
    const saveExpense= async ()=>{
     try{
-     console.log('expnse 33', expense);
-     await axios.patch('/exp/updateExpense/', expense);    
-    }catch(error){console.log('ExpenseForm, could not save the expense', error)}
+     console.log('expense 35', expense._id);
+     await axios.patch(`/exp/updateExpense/${expense._id}`, expense); 
+     console.log(expense)
+     console.log('done')   ;
+    }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
    saveExpense();
  }
 
  return(
   <div>
-   <form className="expensesForm" onSubmit={handleSubmit}>
-    <span className="radioBtns" onChange={handleChange}>
+    <h1>Edit {expense.name}</h1>
+   <form className="expensesForm" onSubmit={handleEditSubmit}>
+    <span className="radioBtns" onChange={handleChange}>{/*Radio buttons*/}
       <div className="input-radio"> 
         <input type="radio" id="expensepay"
         name="expenseType"
@@ -81,6 +85,8 @@ const ExpenseEdit=(props)=>{
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>
    </form>
+  
+  
   </div>
  );
 }

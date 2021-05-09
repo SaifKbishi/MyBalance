@@ -25,7 +25,7 @@ app.get("/",  (req, res) =>{
 });
 
 
-app.get("/",  (req, res) =>{ res.send('hello from the server')});
+// app.get("/",  (req, res) =>{ res.send('hello from the server')});
 
 
 const PORT = process.env.PORT || 3008;//this ,ust be the same as in the client package.json =>   "proxy":"http://localhost:3008/",
