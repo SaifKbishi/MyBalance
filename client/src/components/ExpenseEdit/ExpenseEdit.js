@@ -11,7 +11,7 @@ const ExpenseEdit=(props)=>{
    console.log('EE 10 ExpenseEdit: ',props)
   const getExpenseItem = async ()=>{
    try{
-     console.log('props.match.params._id:', props.match.params._id)
+    console.log('props.match.params._id:', props.match.params._id)
     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
     console.log('13 edit', response.data);
     setExpense(response.data);
@@ -28,14 +28,15 @@ const ExpenseEdit=(props)=>{
 
  const handleEditSubmit=(e)=>{
   console.log('handleEditSubmit 29');
-  //  e.preventDefault();
+   e.preventDefault();
    if(!expense.name || !expense.amount ) return;   
    const saveExpense= async ()=>{
     try{
      console.log('expense 35', expense._id);
      await axios.patch(`/exp/updateExpense/${expense._id}`, expense); 
      console.log(expense)
-     console.log('done')   ;
+     console.log('done');
+     setExpense(initialState);
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
    saveExpense();
@@ -84,9 +85,7 @@ const ExpenseEdit=(props)=>{
     <div className="btn-group">
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>
-   </form>
-  
-  
+   </form>  
   </div>
  );
 }

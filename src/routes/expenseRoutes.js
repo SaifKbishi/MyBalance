@@ -27,15 +27,40 @@ router.get('/allExpenses/',async (req, res)=>{
 });
 
 //retrive by Month ID             //READ
-router.get('/viewbymonth/:id',async (req, res)=>{
+//http://localhost:3000/exp/viewbymonth/5
+router.get('/viewbymonth/:month',async (req, res)=>{
  try{
-  const month = await Expense.findById(req.params.id);
-  res.status(200).send(month);
+  console.log('month: ',req.params.month);
+  const month = req.params.month;
+  const allExpData = await Expense.find({});  
+  const filteredData = allExpData.filter(byMonth=> {
+   let m = byMonth.date.getMonth()+1;
+    if(m == month){
+     return byMonth;
+    }else{
+     console.log('the amount is: ',byMonth.amount)
+    }
+  });
+  res.status(200).send(filteredData);
  }catch(error){
-  console.log('Did not find that month with ID:',req.params.id);
+  console.log('Did not find that month :',req.params.month);
   res.status(400).send(error);
  }
 });
+
+/**[
+  {
+    '$project': {
+      'date': {
+        '$month': '$date'
+      }
+    }
+  }, {
+    '$match': {
+      'date': 5
+    }
+  }
+] */
 
 //retrive by expense ID             //READ
 router.get('/getExpenseByID/:id',async (req, res)=>{

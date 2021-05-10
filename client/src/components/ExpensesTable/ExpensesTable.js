@@ -6,13 +6,10 @@ import { Link } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
  const [expense, setExpense] = useState([]);
-
  useEffect(()=>{
   const fetchData = async() =>{
    try{
-    // console.log('fetching month data ');
     const data = await axios.get('/exp/allExpenses/');
-    // console.log('data 15',data.data);
     setExpense(data.data);
    }catch(error){
     console.log('could not fetch data', error);
@@ -42,16 +39,23 @@ const ExpensesTable =(props)=>{
    getItemToEdit();
  }//handleEdit
 
+ 
+
  return(
   <div>
-   <div className="expensesTable">{expense.map((expItem)=>{    
+   <div className="expensesTable">{expense.map((expItem)=>{  
+    
     return(
-     <React.Fragment key={expItem._id}>
+     <React.Fragment key={expItem._id}>      
       {/* <small onClick={<ExpenseEdit dataFromExpensesTable={expItem._id}/>} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}> */}
       <small onClick={()=>handleEdit(expItem._id)} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}>
       {/* <small className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}> */}
       <span className="deleteExpItem" onClick={()=>handleDelete(expItem._id)}>X</span>
-      <Link to={`/exp/updateExpense/${expItem._id}`}> <span className="expName"> {expItem.name}</span> <span className="expAmount">{expItem.amount}</span></Link>
+      <Link to={`/exp/updateExpense/${expItem._id}`}> 
+        <span className="expName"> {expItem.name}</span> 
+        <span className="expAmount">{expItem.amount}</span>
+        
+        </Link>
       </small>      
      </React.Fragment>
     );
