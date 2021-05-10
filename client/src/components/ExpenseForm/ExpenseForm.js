@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import axios from 'axios'; 
 import './ExpenseForm.css';
 import TextInput from '../utils/TextInput';
@@ -11,6 +11,10 @@ const ExpenseForm=()=>{
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});
  }
+ const resetForm =()=>{
+
+ }
+//  useEffect(() => console.log('mounted'), []);
 
  const handleSubmit=(e)=>{
    e.preventDefault();
@@ -21,6 +25,7 @@ const ExpenseForm=()=>{
     }catch(error){console.log('ExpenseForm, could not save the expense', error)}
    }//saveExpense
    saveExpense();
+   setExpense(initialState);
  }
 
  return(

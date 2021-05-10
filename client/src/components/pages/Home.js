@@ -5,9 +5,8 @@ import ExpensesTable from '../ExpensesTable/ExpensesTable'
 // import ExpenseEdit from '../ExpenseEdit/ExpenseEdit'
 
 const Home=(props)=>{
- console.log('props:', props)
+ 
  return(
-  console.log(),
   <div className="homepage">
    <ExpenseForm/>
    <hr/>

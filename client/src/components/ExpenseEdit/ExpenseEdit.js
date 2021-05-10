@@ -8,37 +8,34 @@ const ExpenseEdit=(props)=>{
  const [expense, setExpense] = useState(initialState);
 
  useEffect( ()=>{
+
    console.log('EE 10 ExpenseEdit: ',props)
-  const getExpenseItem = async ()=>{
-   try{
-    console.log('props.match.params._id:', props.match.params._id)
-    const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
-    console.log('13 edit', response.data);
-    setExpense(response.data);
-   }catch(error){console.log('error editing: ', error)}
+   const getExpenseItem = async ()=>{
+    try{
+     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
+     setExpense(response.data);
+    }catch(error){console.log('error editing: ', error)}
   }
   getExpenseItem();
  },[]);
 
  const handleChange = (e)=>{
-  console.log('EE 10',e.target.name,'value:', e.target.value, '     ',e.target);
   setExpense({...expense,[e.target.name]:e.target.value});
-  console.log('12',expense);
  }
 
  const handleEditSubmit=(e)=>{
   console.log('handleEditSubmit 29');
-   e.preventDefault();
+  //  e.preventDefault();
    if(!expense.name || !expense.amount ) return;   
    const saveExpense= async ()=>{
     try{
-     console.log('expense 35', expense._id);
-     await axios.patch(`/exp/updateExpense/${expense._id}`, expense); 
-     console.log(expense)
-     console.log('done');
+     await axios.patch(`/exp/updateExpense/${expense._id}`, expense);
+     console.log('edit is done');
      setExpense(initialState);
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
+   props.history.push('/');
+  //  window.location.reload();
    saveExpense();
  }
 

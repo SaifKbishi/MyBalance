@@ -3,12 +3,14 @@ import axios from 'axios' ;
 import './ExpensesTable.css';
 import { Link } from 'react-router-dom';
 
-
 const ExpensesTable =(props)=>{
+
  const [expense, setExpense] = useState([]);
+ 
  useEffect(()=>{
   const fetchData = async() =>{
    try{
+    // const data = await axios.get('/exp/allExpenses/');
     const data = await axios.get('/exp/allExpenses/');
     setExpense(data.data);
    }catch(error){
@@ -38,8 +40,6 @@ const ExpensesTable =(props)=>{
    }
    getItemToEdit();
  }//handleEdit
-
- 
 
  return(
   <div>
