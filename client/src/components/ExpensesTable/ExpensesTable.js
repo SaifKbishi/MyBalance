@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import MonthViewInYear from '../MonthViewInYear/MonthViewInYear'
 import axios from 'axios' ;
 import './ExpensesTable.css';
-import { Link } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
  const [expense, setExpense] = useState([]);
@@ -42,7 +42,7 @@ const ExpensesTable =(props)=>{
 
 
  return(
-  <div>
+  <div className="yearView">
      <ReactBootStrap.Table bordered hover size="sm" >
     <thead>
       <tr>
@@ -76,7 +76,7 @@ const ExpensesTable =(props)=>{
     </tbody>
    </ReactBootStrap.Table>
   <hr/>
-   {/* <div className="expensesTable">{expense.map((expItem)=>{    
+   <div className="expensesTable">{expense.map((expItem)=>{    
     return(
      <React.Fragment key={expItem._id}>
       <small onClick={()=>handleEdit(expItem._id)} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}>
@@ -89,7 +89,7 @@ const ExpensesTable =(props)=>{
       
      </React.Fragment>
     );
-   })}</div> */}
+   })}</div>
   
   </div>
  );

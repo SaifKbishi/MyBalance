@@ -28,17 +28,4 @@ function App() {
   );
 }
 
-// function Main() {
-//   return(
-//     <Switch>
-//      <Route exact path="/" component={Home}/>
-//      <Route exact path="/viewbymonth/" component={MonthView}/>
-//      <Route exact path="/allExpenses/" component={ExpensesTable}/>
-//      <Route exact path="/addExpense/" component={ExpenseForm}/>
-//      {/* <Route exact path="/todos/:_id" component={TodoDelete}/> */}
-//      <Route exact path="/updateExpense/:_id/" component={ExpenseEdit}/>
-//     </Switch>
-//   );  
-//  }
-
 export default App;

@@ -27,10 +27,20 @@ const MonthView =()=>{
  }//handleChange
  const history = useHistory();
 
+ const handleDelete = async (id)=>{
+  const expToDelete = id;
+  try {
+   await axios.delete(`/exp/deleteExpense/${expToDelete}`);
+  } catch (error) {
+   console.log('error with the delete: ', error)
+  }
+ }//handleDelete
+
  const renderAnExpense = (exp, index)=>{
   return(
    <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
     onClick={(e)=>(console.log('dfdsf', index, expense[index]._id), history.push(`/updateExpense/${ expense[index]._id}`))} >
+    {/* <td className="deleteIcon"><span className="deleteExpItem" data-delete_tooltip='Delete Expense' onClick={()=>handleDelete(exp._id)}>X</span></td> */}
     <td>{exp.name}</td>
     <td>{exp.amount}</td>
     <td>{exp.expenseType}</td>
@@ -43,7 +53,7 @@ const MonthView =()=>{
 
  return(
   console.log('month view', month),
-  <div>
+  <div className="monthView">
    <select onChange={handleChange}>
     <option value="-1">select month</option>
     <option value="1">January</option>
@@ -63,6 +73,7 @@ const MonthView =()=>{
      <ReactBootStrap.Table bordered hover size="sm" options={options}>
       <thead>
         <tr>
+         {/* <th></th> */}
          <th>Expense Name</th>
          <th>Amount in $</th>
          <th>Expense Type</th>

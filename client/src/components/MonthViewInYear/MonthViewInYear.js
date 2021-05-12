@@ -43,27 +43,11 @@ const MonthViewInYear =(props)=>{
  return(
   // console.log('month view', month),
   <div>
-   {/* <select onChange={handleChange}>
-    <option value="-1">select month</option>
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-    <option value="4">April</option>
-    <option value="5">May</option>
-    <option value="6">June</option>
-    <option value="7">July</option>
-    <option value="8">August</option>
-    <option value="9">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-   </select> */}
-   <hr/>
-     <ReactBootStrap.Table bordered hover size="sm" options={options}>      
-      <tbody>
-       {expense.map(renderAnExpense)}
-      </tbody>
-     </ReactBootStrap.Table>    
+   <ReactBootStrap.Table bordered hover size="sm" options={options}>      
+    <tbody>
+     {expense.map(renderAnExpense)}
+    </tbody>
+   </ReactBootStrap.Table>    
   </div>
  );
 }//ExpensesTable

@@ -9,3 +9,11 @@
  cursor: pointer;
  /* font-weight: bold; */
 }
+
+.container{
+ max-width: 95%;
+}
+.monthView{
+ max-width: 1040px;
+ margin: auto;
+}
