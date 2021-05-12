@@ -4,7 +4,6 @@ const cors = require("cors");
 const path = require("path");
 app.use(cors());
 app.use(express.json());
-// const expRoute = require('./src/routes/expensemonth');
 const expRoute = require('./src/routes/expenseRoutes');
 app.use('/exp', expRoute);
 

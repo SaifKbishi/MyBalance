@@ -8,8 +8,6 @@ const ExpenseEdit=(props)=>{
  const [expense, setExpense] = useState(initialState);
 
  useEffect( ()=>{
-
-   console.log('EE 10 ExpenseEdit: ',props)
    const getExpenseItem = async ()=>{
     try{
      const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
@@ -24,7 +22,6 @@ const ExpenseEdit=(props)=>{
  }
 
  const handleEditSubmit=(e)=>{
-  console.log('handleEditSubmit 29');
   //  e.preventDefault();
    if(!expense.name || !expense.amount ) return;   
    const saveExpense= async ()=>{
@@ -35,7 +32,6 @@ const ExpenseEdit=(props)=>{
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
    props.history.push('/');
-  //  window.location.reload();
    saveExpense();
  }
 

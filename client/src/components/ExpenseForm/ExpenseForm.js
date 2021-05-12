@@ -11,9 +11,7 @@ const ExpenseForm=()=>{
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});
  }
- const resetForm =()=>{
-
- }
+ 
 //  useEffect(() => console.log('mounted'), []);
 
  const handleSubmit=(e)=>{
@@ -36,7 +34,6 @@ const ExpenseForm=()=>{
       <RadioButton divCN="input-radio" inputType="radio" inputID="income" name="expenseType" value={expense.income}  labelID="incomeLabel" htmlFor="income" labelText="Add Income"/>      
     </span>
     <TextInput divCN="form-group" labelText="Date: " name="date"  type="date" value={expense.date} onChange={handleChange}  inputCN="form-control"/>
-    {/* <TextInput divCN="form-group" labelText="Date: " name="date"  type="date" value={{ "$dateToString": { "format": "%Y-%m-%d", "date": "$expense.date" } }} onChange={handleChange}  inputCN="form-control"/> */}
     <TextInput divCN="form-group" labelText="Name: " name="name"  type="text" value={expense.name} onChange={handleChange}  inputCN="form-control"/>
     <TextInput divCN="form-group" labelText="Amount: " name="amount"  type="text" value={expense.amount} onChange={handleChange}  inputCN="form-control"/>
     <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>

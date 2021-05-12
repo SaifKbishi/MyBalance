@@ -4,7 +4,8 @@ import './ExpensesTable.css';
 import { Link } from 'react-router-dom';
 import * as ReactBootStrap from 'react-bootstrap';
 
-const ExpensesTable =(props)=>{
+const ExpensesTable2 =(props)=>{
+
  const [expense, setExpense] = useState([]);
 
  useEffect(()=>{
@@ -12,6 +13,7 @@ const ExpensesTable =(props)=>{
    try{
     // const data = await axios.get('/exp/allExpenses/');
     const data = await axios.get('/exp/allExpenses/');
+    // console.log('16: ',data.data)
     setExpense(data.data);
    }catch(error){
     console.log('could not fetch data', error);
@@ -22,6 +24,7 @@ const ExpensesTable =(props)=>{
  
  const handleDelete = async (id)=>{
   const expToDelete = id;
+  console.log('expToDelete:',expToDelete)
   try {
    await axios.delete(`/exp/deleteExpense/${expToDelete}`);
   } catch (error) {
@@ -34,21 +37,21 @@ const ExpensesTable =(props)=>{
    const getItemToEdit = async ()=>{
     try{
      const response = await axios.get(`/exp/getExpenseByID/${expToEdit}`);
-    //  console.log('43 ExpensesTable response data:',response.data);
+     console.log('43 ExpensesTable response data:',response.data);
     }catch(error){console.log('could not fetch item', error)}
    }
    getItemToEdit();
  }//handleEdit
 
-
 const [monthExp, setMonthExp] = useState([]);
-const fetchMonthData = async (month)=>{
-  try{
-    const monthData = await axios.get(`/exp/viewbymonth/${month}`);
-    setMonthExp(monthData.data);
-  }catch(error){console.log('could not fetch data for month', error)}
-}   
-// console.log('month: ',fetchMonthData(6))
+// const fetchMonthData = async (month)=>{
+//   try{
+//     const monthData = await axios.get(`/exp/viewbymonth/${month}`);
+//     console.log('50',monthData.data)
+//     // setMonthExp(monthData.data);
+//   }catch(error){console.log('could not fetch data for month', error)}
+// }   
+//  console.log('month: ',fetchMonthData(6))
 
 //  const renderMonth = (month)=>{
 //  }
@@ -73,4 +76,4 @@ const fetchMonthData = async (month)=>{
  );
 }//ExpensesTable
 
-export default ExpensesTable;
+export default ExpensesTable2;

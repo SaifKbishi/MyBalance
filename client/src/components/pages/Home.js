@@ -4,10 +4,11 @@ import ExpenseForm from '../ExpenseForm/ExpenseForm'
 import ExpensesTable from '../ExpensesTable/ExpensesTable'
 // import ExpenseEdit from '../ExpenseEdit/ExpenseEdit'
 
-const Home=(props)=>{
+function Home() { 
  
  return(
   <div className="homepage">
+   <h3>Welcome to MyBalance Home page</h3>   
    <ExpenseForm/>
    <hr/>
    <ExpensesTable />
