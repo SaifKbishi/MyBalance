@@ -22,7 +22,7 @@ const ExpenseEdit=(props)=>{
  }
 
  const handleEditSubmit=(e)=>{
-  //  e.preventDefault();
+   e.preventDefault();
    if(!expense.name || !expense.amount ) return;   
    const saveExpense= async ()=>{
     try{
@@ -31,7 +31,8 @@ const ExpenseEdit=(props)=>{
      setExpense(initialState);
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
-   props.history.push('/');
+   console.log('props.history', props.history);
+   props.history.goBack();
    saveExpense();
  }
 

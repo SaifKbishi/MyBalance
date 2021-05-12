@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios' ;
-import './MonthView.css';
+import './MonthViewInYear.css';
 import * as ReactBootStrap from 'react-bootstrap';
 import { Link,useHistory  } from 'react-router-dom';
 
-const MonthView =()=>{
+const MonthViewInYear =(props)=>{
+ console.log('8 props',props, props.month) 
  const [expense, setExpense] = useState([]);
  const date = new Date();
  const [month, setMonth] = useState(date.getMonth()+1);
@@ -18,7 +19,7 @@ const MonthView =()=>{
     console.log('MonthView, could not fetch data', error);
    }
   }
-  fetchMonthData(month);
+  fetchMonthData(props.month);
  },[month]);
 
  const handleChange = (e)=>{
@@ -33,8 +34,6 @@ const MonthView =()=>{
     onClick={(e)=>(console.log('dfdsf', index, expense[index]._id), history.push(`/updateExpense/${ expense[index]._id}`))} >
     <td>{exp.name}</td>
     <td>{exp.amount}</td>
-    <td>{exp.expenseType}</td>
-    <td>{exp.description}</td>
    </tr>
   );
  }//renderAnExpense
@@ -42,9 +41,9 @@ const MonthView =()=>{
  const options= {onRowClick:function(row){console.log(row)}}
 
  return(
-  console.log('month view', month),
+  // console.log('month view', month),
   <div>
-   <select onChange={handleChange}>
+   {/* <select onChange={handleChange}>
     <option value="-1">select month</option>
     <option value="1">January</option>
     <option value="2">February</option>
@@ -58,17 +57,9 @@ const MonthView =()=>{
     <option value="10">October</option>
     <option value="11">November</option>
     <option value="12">December</option>
-   </select>
+   </select> */}
    <hr/>
-     <ReactBootStrap.Table bordered hover size="sm" options={options}>
-      <thead>
-        <tr>
-         <th>Expense Name</th>
-         <th>Amount in $</th>
-         <th>Expense Type</th>
-         <th>Description</th>
-        </tr>
-      </thead>
+     <ReactBootStrap.Table bordered hover size="sm" options={options}>      
       <tbody>
        {expense.map(renderAnExpense)}
       </tbody>
@@ -77,4 +68,4 @@ const MonthView =()=>{
  );
 }//ExpensesTable
 
-export default MonthView;
+export default MonthViewInYear;

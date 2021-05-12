@@ -3,7 +3,6 @@ const Expense = require('../models/expenses_Model');
 const allExpenses = async (req, res)=>{
  try{
   const allExpData = await Expense.find({});
-  // console.log('21 21:',allExpData)
   res.status(200).send(allExpData);
  }catch(error){
   console.log('could not fetch all Month expenses');
@@ -22,24 +21,12 @@ const addExpense = async (req, res)=>{
  }
 };
 
-const viewbymonth = async (req, res)=>{
- console.log('EC 26:',req.params.month)
- try{
-  "date.getMonth()+1"
-  const oneMonthData = await Expense.find({date: req.params.month});
-  console.log('EC 30:',date)
-  console.log('oneMonthData: ',oneMonthData);
-  res.status(200).send(oneMonthData);
- }catch(error){console.log('error fetching one month: ', error)}
-};
-
 const updateExpense = async (req, res)=>{
  try{
   const exp1 = await Expense.findByIdAndUpdate(req.params.id, req.body);
   if(!exp1){
    return res.status(404).send();
-  }  
-  // res.status(201).send(exp1);
+  }
   res.send(exp1);
  }catch(error){
   console.log('could not complete the update');
@@ -71,6 +58,28 @@ const getExpenseByID = async (req, res)=>{
  }
 };
 
+const viewbymonth = async (req, res)=>{
+ try{
+  console.log('month: ',req.params.month);
+  const month = req.params.month;
+  const allExpData = await Expense.find({});  
+  const filteredData = allExpData.filter(byMonth=> {
+   let m = byMonth.date.getMonth()+1;
+    if(m == month){
+     return byMonth;
+    }else{
+     return false;
+    }
+  });
+  res.status(200).send(filteredData);
+ }catch(error){
+  console.log('Did not find that month :',req.params.month);
+  res.status(400).send(error);
+ }
+};
+
+
+
 module.exports = {
  allExpenses,
  addExpense,
@@ -79,3 +88,26 @@ module.exports = {
  deleteExpense,
  getExpenseByID
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const viewbymonth = async (req, res)=>{
+//  console.log('EC 26:',req.params.month)
+//  try{
+//   "date.getMonth()+1"
+//   const oneMonthData = await Expense.find({date: req.params.month});
+//   console.log('EC 30:',date)
+//   console.log('oneMonthData: ',oneMonthData);
+//   res.status(200).send(oneMonthData);
+//  }catch(error){console.log('error fetching one month: ', error)}
+// };

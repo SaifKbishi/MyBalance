@@ -1,0 +1,11 @@
+.income{
+ background-color: green;
+}
+.expense{
+ background-color: red;
+}
+
+.expensesItem:hover{
+ cursor: pointer;
+ /* font-weight: bold; */
+}

@@ -12,7 +12,7 @@ router.get('/allExpenses/', (req, res)=>{
  expenseController.allExpenses(req, res)
 });
 
-router.get('/viewbymonth/', (req, res)=>{ 
+router.get('/viewbymonth/:month', (req, res)=>{ 
  expenseController.viewbymonth(req, res);
 });
 //update by ID
@@ -26,27 +26,6 @@ router.delete('/deleteExpense/:id', (req, res)=>{
 //retrive by expense ID
 router.get('/getExpenseByID/:id', (req, res)=>{
  expenseController.getExpenseByID(req,res);
-});
-
-router.get('/viewbymonth/:month',async (req, res)=>{
- console.log('3232')
- try{
-  console.log('month: ',req.params.month);
-  const month = req.params.month;
-  const allExpData = await Expense.find({});  
-  const filteredData = allExpData.filter(byMonth=> {
-   let m = byMonth.date.getMonth()+1;
-    if(m == month){
-     return byMonth;
-    }else{
-     return false;
-    }
-  });
-  res.status(200).send(filteredData);
- }catch(error){
-  console.log('Did not find that month :',req.params.month);
-  res.status(400).send(error);
- }
 });
 
 module.exports = router;

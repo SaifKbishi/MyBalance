@@ -2,6 +2,7 @@ import React  from 'react';
 // import './home.css'
 import ExpenseForm from '../ExpenseForm/ExpenseForm'
 import ExpensesTable from '../ExpensesTable/ExpensesTable'
+// import ExpensesTable2 from '../ExpensesTable/ExpensesTable2'
 // import ExpenseEdit from '../ExpenseEdit/ExpenseEdit'
 
 function Home() { 

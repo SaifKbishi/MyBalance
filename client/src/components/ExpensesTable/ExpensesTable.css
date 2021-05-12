@@ -1,3 +1,12 @@
+:root{ 
+ --primary-color: #557A95;
+ --seconadry-color: #938e94;
+ --footer-bg: #5D4C61;
+ --background: #7395AE;
+ --extra-color: #B0A296;
+ --whitesmoke-color: #F5F5F5;
+}
+
 .expensesTable{
  display: flex; 
  margin-bottom: 100px;
@@ -47,4 +56,63 @@ a, a:visited{
  color: inherit !important;
  text-decoration: none;
  text-decoration-color: none;
+}
+
+[data-tooltip]{
+ position: relative;
+ text-decoration: none;
+}
+[data-tooltip]:hover::before {
+ content: attr(data-tooltip);
+ position: absolute;
+ font-size: 10px;
+ left: 65px;
+ top: -19px;
+ padding: 5px;
+ width: max-content;
+ border-radius: 10px;
+ background:var(--extra-color);
+ color: var( --footer-bg);
+}
+[data-tooltip]:hover::after {
+ content: "";
+ position: absolute;
+ left: 60px;
+ width: 0;
+ height: 0;
+ border-left: 5px solid transparent;
+ border-right: 5px solid transparent;
+ border-top: 10px solid var(--extra-color);
+ transform: rotate(45deg);
+}
+[data-delete_tooltip]{
+ position: relative;
+ text-decoration: none;
+}
+[data-delete_tooltip]:hover::before {
+ content: attr(data-delete_tooltip);
+ position: absolute;
+ font-size: 10px;
+ left: 19px;
+ top: -19px;
+ padding: 5px;
+ width: max-content;
+ border-radius: 10px;
+ background:var(--extra-color);
+ color: var( --footer-bg);
+}
+[data-delete_tooltip]:hover::after {
+ content: "";
+ position: absolute;
+ left: 19px;
+ width: 0;
+ height: 0;
+ border-left: 5px solid transparent;
+ border-right: 5px solid transparent;
+ border-top: 10px solid var(--extra-color);
+ transform: rotate(45deg);
+}
+
+.container{
+ max-width: 95% !important;
 }
