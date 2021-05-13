@@ -16,16 +16,41 @@ app.use(express.static(publicDirectory));
 require('./src/db/mongoose'); 
 app.use(express.static('./src/public'));
 
+const db = require("./src/models");
+const Role = db.role;
+initial();
+
 if (process.env.NODE_ENV === "production") {  
   app.use(express.static(path.join(__dirname, '../build')));
 }
-app.get("/",  (req, res) =>{
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
 
+function initial(){
+  Role.estimatedDocumentCount((error, count)=>{
+   if(!error && count === 0){
+    new Role({name: "user"}).save(error =>{
+     if(error){
+      console.log('error', error)
+     }
+     console.log("added 'user' to roles collection");
+    });
+ 
+    new Role({name: "admin"}).save(error =>{
+     if(error){
+      console.log('error', error)
+     }
+     console.log("added 'admin' to roles collection");
+    });
+   }
+  });
+ }//initial
+
+app.get('/',  (req, res) =>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+require('./src/routes/authRoutes')(app);
+require('./src/routes/userRoutes')(app);
 
 // app.get("/",  (req, res) =>{ res.send('hello from the server')});
-
 
 const PORT = process.env.PORT || 3008;//this ,ust be the same as in the client package.json =>   "proxy":"http://localhost:3008/",
 app.listen(PORT, () => {

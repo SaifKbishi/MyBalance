@@ -5,7 +5,7 @@ import * as ReactBootStrap from 'react-bootstrap';
 import { Link,useHistory  } from 'react-router-dom';
 
 const MonthViewInYear =(props)=>{
- console.log('8 props',props, props.month) 
+ // console.log('8 props',props, props.month) 
  const [expense, setExpense] = useState([]);
  const date = new Date();
  const [month, setMonth] = useState(date.getMonth()+1);

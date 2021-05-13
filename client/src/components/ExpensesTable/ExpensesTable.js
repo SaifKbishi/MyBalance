@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import MonthViewInYear from '../MonthViewInYear/MonthViewInYear'
+import MonthView from '../MonthView/MonthView'
 import axios from 'axios' ;
 import './ExpensesTable.css';
 import * as ReactBootStrap from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link,useHistory  } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
  const [expense, setExpense] = useState([]);
+ const history = useHistory();
 
  useEffect(()=>{
   const fetchData = async() =>{
@@ -39,25 +42,32 @@ const ExpensesTable =(props)=>{
    }
    getItemToEdit();
  }//handleEdit
-
+ 
+ const selectMonth = async (e)=>{
+  //  debugger;
+   console.log('month value: ', e.target.cellIndex+1)
+   const selectedMonth=e.target.cellIndex+1;
+  //  <MonthView month={selectedMonth}/>
+   history.push(`/viewbymonth/${selectedMonth}`)
+ }
 
  return(
   <div className="yearView">
-     <ReactBootStrap.Table bordered hover size="sm" >
+     <ReactBootStrap.Table bordered hover size="sm" variant="dark">
     <thead>
-      <tr>
-        <th>January</th>
-        <th>February</th>
-        <th>March</th>
-        <th>April</th>
-        <th>May</th>
-        <th>June</th>
-        <th>July</th>
-        <th>August</th>
-        <th>September</th>
-        <th>October</th>
-        <th>November</th>
-        <th>December</th>
+      <tr onClick={selectMonth}>
+        <th value="1">January</th>
+        <th value="2">February</th>
+        <th value="3">March</th>
+        <th value="4">April</th>
+        <th value="5">May</th>
+        <th value="6">June</th>
+        <th value="7">July</th>
+        <th value="8">August</th>
+        <th value="9">September</th>
+        <th value="10">October</th>
+        <th value="11">November</th>
+       <th value="12">December</th>
       </tr>
     </thead>
     <tbody>

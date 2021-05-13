@@ -60,7 +60,6 @@ const getExpenseByID = async (req, res)=>{
 
 const viewbymonth = async (req, res)=>{
  try{
-  console.log('month: ',req.params.month);
   const month = req.params.month;
   const allExpData = await Expense.find({});  
   const filteredData = allExpData.filter(byMonth=> {
@@ -77,8 +76,6 @@ const viewbymonth = async (req, res)=>{
   res.status(400).send(error);
  }
 };
-
-
 
 module.exports = {
  allExpenses,
