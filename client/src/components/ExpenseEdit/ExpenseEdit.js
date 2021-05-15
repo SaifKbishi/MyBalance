@@ -38,7 +38,7 @@ const ExpenseEdit=(props)=>{
 
  return(
   <div>
-    <h1>Edit {expense.name}</h1>
+    <h2>Editing {expense.name}</h2>
    <form className="expensesForm" onSubmit={handleEditSubmit}>
     <span className="radioBtns" onChange={handleChange}>{/*Radio buttons*/}
       <div className="input-radio"> 

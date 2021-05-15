@@ -3,16 +3,16 @@
   flex-direction: column;
   align-items: center;
  }
- .form-group{
+ .expensesForm .form-group{
   display: flex;
   margin-bottom: 0.2rem !important;
  }
- .form-group label{
+ .expensesForm .form-group label{
   width: 100px;
   text-align: left;
   align-self: center;
  }
- .form-group input{
+ .expensesForm .form-group input{
   width: 200px;
   text-align: left;
  }

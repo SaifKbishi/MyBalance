@@ -54,44 +54,47 @@ exports.signup = (req, res)=>{
    });
  }
  });
-}
+}//signup
 
 exports.signin = (req, res)=>{
- User.findOne({username: req.body.username})
-  .populate('roles', '-__v')
-  .exec((err, user) => {
-   if (err) {
-     res.status(500).send({ message: err });
-     return;
+  User.findOne({username: req.body.username})
+   .populate('roles', '-__v')
+   .exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    
+    if (!user) {
+     return res.status(404).send({ message: "User Not found." });
    }
-   
-   if (!user) {
-    return res.status(404).send({ message: "User Not found." });
-  }
-
-  let passwordIsValid = bcrypt.compareSync(
-    req.body.password,
-    user.password
-  );
-
-  if (!passwordIsValid) {
-    return res.status(401).send({
-      accessToken: null,
-      message: "Invalid Password!"
-    });
-  }
-
-  let token = jwt.sign({id: user.id}, config.secret, {expiresIn:86400});
-  let authorties =[];
-  for(let i=0; i<user.roles.length; i++){
-   authorties.push('ROLE_' +user.roles[i].name.toUpperCase());
-  }
-  res.status(200).send({
-   id: user._id,
-   username: user.username,
-   email: user.email,
-   role: authorties,
-   accessToken: token
+ 
+   let passwordIsValid = bcrypt.compareSync(
+     req.body.password,
+     user.password
+   );
+ 
+   if (!passwordIsValid) {
+     return res.status(401).send({
+       accessToken: null,
+       message: "Invalid Password!"
+     });
+   }
+ 
+   let token = jwt.sign({id: user.id}, config.secret, {expiresIn:86400});
+   let authorties =[];
+   for(let i=0; i<user.roles.length; i++){
+     // console.log('87 auth.controller: ','\nZZZZ user: ',user
+     //                                   ,'\nCCCC user.roles[i]: ',user.roles[i]
+     //                                   ,'\nRRRR user.roles[i].username: ', user.roles[i].name)    
+    authorties.push('ROLE_' +user.roles[i].name.toUpperCase());
+   }
+   res.status(200).send({
+    id: user._id,
+    username: user.username,
+    email: user.email,
+    role: authorties,
+    accessToken: token
+   });
   });
- });
-};//signin
+ };//signin
