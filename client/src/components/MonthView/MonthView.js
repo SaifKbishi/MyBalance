@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios' ;
-import './MonthView.css';
 import * as ReactBootStrap from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
+import './MonthView.css';
 
 const MonthView =(props)=>{
  const [expense, setExpense] = useState([]);
@@ -10,13 +10,13 @@ const MonthView =(props)=>{
  const [month, setMonth] = useState(date.getMonth()+1);
  const history = useHistory();
 
- console.log('props 13:', props) 
-
  useEffect(()=>{
   const fetchMonthData = async(month) =>{   
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);
-    setExpense(data.data);
+    const dataArray = data.data;
+    dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
+    setExpense(dataArray);
    }catch(error){
     console.log('MonthView, could not fetch data', error);
    }
@@ -33,20 +33,24 @@ const MonthView =(props)=>{
   const expToDelete = id;
   try {
    await axios.delete(`/exp/deleteExpense/${expToDelete}`);
+   history.push(`/viewbymonth/`);
   } catch (error) {
    console.log('error with the delete: ', error)
   }
+  window.location.reload();
  }//handleDelete
 
  const renderAnExpense = (exp, index)=>{
   return(
    <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
-    onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))} >
-    {/* <td className="deleteIcon"><span className="deleteExpItem" data-delete_tooltip='Delete Expense' onClick={()=>handleDelete(exp._id)}>X</span></td> */}
-    <td>{exp.name}</td>
-    <td>{exp.amount}</td>
-    {/* <td>{exp.expenseType}</td> */}
-    <td>{exp.description}</td>
+    // onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))} >
+     >
+    <td className="deleteExpItem" data-delete_tooltipmv='Delete Expense' onClick={()=>handleDelete(exp._id)}>X</td>
+    <>
+    <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.name}</td>
+    <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.amount}</td>
+    <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.description}</td>
+    </>
    </tr>
   );
  }//renderAnExpense
@@ -74,10 +78,9 @@ const MonthView =(props)=>{
      <ReactBootStrap.Table bordered hover size="sm" options={options}>
       <thead>
         <tr>
-         {/* <th></th> */}
+         <th>X</th>
          <th>Expense Name</th>
          <th>Amount in $</th>
-         {/* <th>Expense Type</th> */}
          <th>Description</th>
         </tr>
       </thead>

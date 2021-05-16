@@ -44,10 +44,8 @@ const ExpensesTable =(props)=>{
  }//handleEdit
  
  const selectMonth = async (e)=>{
-  //  debugger;
    console.log('month value: ', e.target.cellIndex+1)
    const selectedMonth=e.target.cellIndex+1;
-  //  <MonthView month={selectedMonth}/>
    history.push(`/viewbymonth/${selectedMonth}`)
  }
 

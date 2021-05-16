@@ -43,7 +43,7 @@ const deleteExpense = async (req, res)=>{
   console.log(expense.name, 'was deleted')
   res.status(200).send(expToDelete);
  }catch(error){
-  console.log(`could not delete ${expenseName.name} because of error: ${error}`);
+  console.log(`could not delete item because of error: ${error}`);
   res.status(400).send(error);
  }
 };
@@ -86,25 +86,3 @@ module.exports = {
  getExpenseByID
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// const viewbymonth = async (req, res)=>{
-//  console.log('EC 26:',req.params.month)
-//  try{
-//   "date.getMonth()+1"
-//   const oneMonthData = await Expense.find({date: req.params.month});
-//   console.log('EC 30:',date)
-//   console.log('oneMonthData: ',oneMonthData);
-//   res.status(200).send(oneMonthData);
-//  }catch(error){console.log('error fetching one month: ', error)}
-// };

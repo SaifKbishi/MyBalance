@@ -17,3 +17,58 @@
  max-width: 1040px !important;
  margin: auto;
 }
+
+[data-tooltip]{
+ position: relative;
+ text-decoration: none;
+}
+[data-tooltip]:hover::before {
+ content: attr(data-tooltip);
+ position: absolute;
+ font-size: 10px;
+ left: 65px;
+ top: -19px;
+ padding: 5px;
+ width: max-content;
+ border-radius: 10px;
+ background:var(--extra-color);
+ color: var( --footer-bg);
+}
+[data-tooltip]:hover::after {
+ content: "";
+ position: absolute;
+ left: 60px;
+ width: 0;
+ height: 0;
+ border-left: 5px solid transparent;
+ border-right: 5px solid transparent;
+ border-top: 10px solid var(--extra-color);
+ transform: rotate(45deg);
+}
+[data-delete_tooltipmv]{
+ position: relative;
+ text-decoration: none;
+}
+[data-delete_tooltipmv]:hover::before {
+ content: attr(data-delete_tooltipmv);
+ position: absolute;
+ font-size: 10px;
+ left: 45px;
+ top: -15px;
+ padding: 5px;
+ width: max-content;
+ border-radius: 10px;
+ background:var(--extra-color);
+ color: var( --footer-bg);
+}
+[data-delete_tooltipmv]:hover::after {
+ content: "";
+ position: absolute;
+ left: 40px;
+ width: 0;
+ height: 0;
+ border-left: 5px solid transparent;
+ border-right: 5px solid transparent;
+ border-top: 10px solid var(--extra-color);
+ transform: rotate(45deg);
+}

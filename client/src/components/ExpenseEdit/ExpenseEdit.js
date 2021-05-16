@@ -72,10 +72,10 @@ const ExpenseEdit=(props)=>{
      <label>Description: </label>
      <input name="description" type="text" value={expense.description} onChange={handleChange} className="form-control" />
     </div>
-    <div className="form-group">
+    {/* <div className="form-group">
      <label>Repeats: </label>
      <input name="repeats" type="text" value={expense.repeats} onChange={handleChange} className="form-control" />
-    </div>
+    </div> */}
     <div className="btn-group">
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>

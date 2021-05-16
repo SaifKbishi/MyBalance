@@ -24,15 +24,14 @@ function Navigation(){
       <div className="navbar-nav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/">Home</NavLink></li>
-          <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/addExpense">New Expense</NavLink></li>
-          <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/viewbymonth">Month View</NavLink></li>          
-          <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/allExpenses">Year View</NavLink></li>          
-          <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/allExpenses">Charts</NavLink></li>          
+          {currentUser && (<li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/addExpense">New Expense</NavLink></li>)}
+          {currentUser && (<li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/viewbymonth">Month View</NavLink></li>)}
+          {currentUser && (<li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/allExpenses">Year View</NavLink></li>)}
+          <li className="nav-itm"><NavLink exact className="nav-link" activeClassName="active" to="/allExpenses">Charts</NavLink></li>
         </ul>
       </div>
       <div className='navbar-nav ml-auto'>
         <div className='navbar-nav mr-auto'>
-          {/* <li className='nav-item'><NavLink to={'/home'} className='nav-link'>Home</NavLink></li>           */}
           {showAdminBoard && (<li className='nav-item'><NavLink to={'/admin'} className='nav-link'>Admin Board</NavLink></li>)}
           {currentUser && (<li className='nav-item'><NavLink to={'/user'} className='nav-link'>User</NavLink></li>)}
         </div>

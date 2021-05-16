@@ -5,7 +5,6 @@ import * as ReactBootStrap from 'react-bootstrap';
 import { useHistory  } from 'react-router-dom';
 
 const MonthViewInYear =(props)=>{
- // console.log('8 props',props, props.month) 
  const [expense, setExpense] = useState([]);
  const date = new Date();
  const [month, setMonth] = useState(date.getMonth()+1);
@@ -14,7 +13,9 @@ const MonthViewInYear =(props)=>{
   const fetchMonthData = async(month) =>{   
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);
-    setExpense(data.data);
+    const dataArray = data.data;
+    dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
+    setExpense(dataArray);
    }catch(error){
     console.log('MonthView, could not fetch data', error);
    }
@@ -31,7 +32,7 @@ const MonthViewInYear =(props)=>{
  const renderAnExpense = (exp, index)=>{
   return(
    <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
-    onClick={(e)=>(console.log('dfdsf', index, expense[index]._id), history.push(`/updateExpense/${ expense[index]._id}`))} >
+    onClick={(e)=>(console.log('index',index, '_id', expense[index]._id), history.push(`/updateExpense/${ expense[index]._id}`))} >
     <td>{exp.name}</td>
     <td>{exp.amount}</td>
    </tr>

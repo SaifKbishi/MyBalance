@@ -5,13 +5,14 @@ import ExpenseEdit from './ExpenseEdit/ExpenseEdit';
 import ExpenseForm from './ExpenseForm/ExpenseForm';
 import ExpensesTable from './ExpensesTable/ExpensesTable';
 // import ExpensesTable2 from './ExpensesTable/ExpensesTable2';
+
+import Home from './pages/Home';
+import Login from './Login/Login';
+import Profile from './Profile/Profile';
+import Register from './Register/Register';
+import BoardUser from './BoardRoles/BoardUser';
+import BoardAdmin  from './BoardRoles/BoardAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/Home'
-import Login from './Login/Login'
-import Profile from './Profile/Profile'
-import Register from './Register/Register'
-import BoardUser from './BoardRoles/BoardUser'
-import BoardAdmin  from './BoardRoles/BoardAdmin'
 
 function Main() {
  return(
@@ -25,7 +26,6 @@ function Main() {
     <Route exact path={'/Register'} component={Register}/>
     <Route exact path={'/profile'} component={Profile}/>
     <Route exact path={'/user'} component={BoardUser}/>
-    {/* <Route exact path={'/mod'} component={BoardModerator}/> */}
     <Route exact path={'/admin'} component={BoardAdmin}/>
    </Switch>
  );  
