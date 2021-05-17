@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios' ;
+import axios from 'axios';
 import * as ReactBootStrap from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import './MonthView.css';
@@ -42,9 +42,7 @@ const MonthView =(props)=>{
 
  const renderAnExpense = (exp, index)=>{
   return(
-   <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
-    // onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))} >
-     >
+   <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} >
     <td className="deleteExpItem" data-delete_tooltipmv='Delete Expense' onClick={()=>handleDelete(exp._id)}>X</td>
     <>
     <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.name}</td>
@@ -56,6 +54,12 @@ const MonthView =(props)=>{
  }//renderAnExpense
 
  const options= {onRowClick:function(row){console.log(row)}}
+
+ const getSum = ()=>{
+  let monthSum = 0;
+  expense.forEach((exp)=>{if(exp.expenseType === 'income') {monthSum+=exp.amount}else{monthSum-=exp.amount}} );
+  return monthSum;
+ }//getSum
 
  return(
   <div className="monthView">
@@ -86,6 +90,12 @@ const MonthView =(props)=>{
       </thead>
       <tbody>
        {expense.map(renderAnExpense)}
+       <tr>
+         <th></th>
+         <th></th>
+         <th>{(getSum()>0) ? -getSum() : getSum()  } $</th>
+         <th></th>
+        </tr>
       </tbody>
      </ReactBootStrap.Table>     
   </div>

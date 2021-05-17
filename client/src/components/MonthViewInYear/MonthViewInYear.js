@@ -10,7 +10,7 @@ const MonthViewInYear =(props)=>{
  const [month, setMonth] = useState(date.getMonth()+1);
 
  useEffect(()=>{
-  const fetchMonthData = async(month) =>{   
+  const fetchMonthData = async(month) =>{
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);
     const dataArray = data.data;
@@ -42,14 +42,13 @@ const MonthViewInYear =(props)=>{
  const options= {onRowClick:function(row){console.log(row)}}
 
  return(
-  // console.log('month view', month),
   <div>
    <ReactBootStrap.Table bordered hover size="sm" options={options}>      
     <tbody>
      {expense.map(renderAnExpense)}
-    </tbody>
-   </ReactBootStrap.Table>    
-  </div>
+    </tbody>  
+   </ReactBootStrap.Table>
+  </div>  
  );
 }//ExpensesTable
 

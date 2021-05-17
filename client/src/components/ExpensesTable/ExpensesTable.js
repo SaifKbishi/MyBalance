@@ -84,20 +84,21 @@ const ExpensesTable =(props)=>{
     </tbody>
    </ReactBootStrap.Table>
   <hr/>
+{/* 
    <div className="expensesTable">{expense.map((expItem)=>{    
-    // return(
-    //  <React.Fragment key={expItem._id}>
-    //   <small onClick={()=>handleEdit(expItem._id)} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}>
-    //   <span className="deleteExpItem" data-delete_tooltip='Delete Expense' onClick={()=>handleDelete(expItem._id)}>X</span>
-    //     <Link to={`/updateExpense/${expItem._id}`} data-tooltip='Edit Expense'> 
-    //       <span className="expName"> {expItem.name}</span> 
-    //       <span className="expAmount">{expItem.amount}</span>
-    //     </Link>
-    //   </small>
+    return(
+     <React.Fragment key={expItem._id}>
+      <small onClick={()=>handleEdit(expItem._id)} className={`expensesItems + ${expItem.expenseType} ? 'income' : 'expense'`} key={expItem._id}>
+      <span className="deleteExpItem" data-delete_tooltip='Delete Expense' onClick={()=>handleDelete(expItem._id)}>X</span>
+        <Link to={`/updateExpense/${expItem._id}`} data-tooltip='Edit Expense'> 
+          <span className="expName"> {expItem.name}</span> 
+          <span className="expAmount">{expItem.amount}</span>
+        </Link>
+      </small>
       
-    //  </React.Fragment>
-    // );
-   })}</div>
+     </React.Fragment>
+    );
+   })}</div> */}
   
   </div>
  );

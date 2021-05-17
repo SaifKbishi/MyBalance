@@ -36,6 +36,10 @@ router.get('/getExpenseByID/:id', (req, res)=>{
  expenseController.getExpenseByID(req,res);
 });
 
+router.get('/charts/', (req, res)=>{
+ expenseController.allExpenses(req, res)
+});
+
 module.exports = router;
 
 

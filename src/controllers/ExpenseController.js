@@ -61,7 +61,7 @@ const getExpenseByID = async (req, res)=>{
 const viewbymonth = async (req, res)=>{
  try{
   const month = req.params.month;
-  const allExpData = await Expense.find({});  
+  const allExpData = await Expense.find({});
   const filteredData = allExpData.filter(byMonth=> {
    let m = byMonth.date.getMonth()+1;
     if(m == month){
@@ -72,7 +72,7 @@ const viewbymonth = async (req, res)=>{
   });
   res.status(200).send(filteredData);
  }catch(error){
-  console.log('Did not find that month :',req.params.month);
+  console.log('EC Did not find that month :',req.params.month);
   res.status(400).send(error);
  }
 };
