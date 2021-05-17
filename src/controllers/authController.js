@@ -93,7 +93,7 @@ exports.signin = (req, res)=>{
     id: user._id,
     username: user.username,
     email: user.email,
-    role: authorties,
+    roles: authorties, //2021016 13:22
     accessToken: token
    });
   });

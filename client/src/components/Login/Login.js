@@ -3,6 +3,7 @@ import AuthService from '../../services/auth.service';
 import TextInput from '../utils/TextInput';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Login.css';
+// import './style.js';
 
 
 const required = (value)=>{
@@ -62,15 +63,7 @@ const Login = (props)=>{
     <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="profile-img" className="profile-img-card" />
     <form onSubmit={handleLogin} ref={form} className="LoginForm">
     <TextInput divCN="form-group" labelText="Username" name="username"  type="text" value={username} onChange={onChangeUsername}  inputCN="form-control"/>
-     {/* <div className="form-group">     
-      <label htmlFor="username">Username</label>      
-      <input type="text" className="form-control" name="username" value={username} onChange={onChangeUsername}/>
-     </div> */}
-    <TextInput divCN="form-group" labelText="Password" name="pw"  type="text" value={pw} onChange={OnChangePW}  inputCN="form-control"/>
-     {/* <div className="form-group">
-      <label htmlFor="pw">Password</label>      
-      <input type="password" className="form-control" name="pw" value={pw} onChange={OnChangePW} />
-     </div> */}
+    <TextInput divCN="form-group" labelText="Password" name="pw"  type="text" value={pw} onChange={OnChangePW}  inputCN="form-control"/> 
      <div className="form-group">
       <button className="btn btn-primary btn-block" disabled={loading}>
        {loading && (<span className="spinner-border spinner-border-sm"></span>)}

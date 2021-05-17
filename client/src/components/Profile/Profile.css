@@ -1,0 +1,9 @@
+.authorities{
+ list-style: none;
+}
+.container.profile{
+ text-align: left;
+}
+.userDetails{
+ padding-left: 50px;
+}

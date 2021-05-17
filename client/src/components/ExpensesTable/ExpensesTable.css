@@ -116,3 +116,14 @@ a, a:visited{
 .container{
  max-width: 95% !important;
 }
+
+@media screen and (max-width: 400px)
+{
+ .monthDropDown th{
+  min-width: 275px;
+ }
+ .expensesItem td{
+  width: 50%;
+ }
+}
+

@@ -12,8 +12,6 @@ const ExpenseForm=()=>{
   setExpense({...expense,[e.target.name]:e.target.value});
  }
  
-//  useEffect(() => console.log('mounted'), []);
-
  const handleSubmit=(e)=>{
    e.preventDefault();
    if(!expense.name || !expense.amount  ) return;   

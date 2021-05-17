@@ -20,3 +20,10 @@
 .nav-item a.nam-link{
 color:rgba(255,255,255,.5)
 }
+
+.yearView{
+ overflow-x: auto;
+}
+.navbar-nav{
+ align-items: flex-start;
+}
