@@ -6,15 +6,15 @@ import './Login.css';
 // import './style.js';
 
 
-const required = (value)=>{
- if(!value){
-  return(
-   <div className='alert alert-danger' role='alert'>
-    This field is required
-   </div>
-  );
- }
-}
+// const required = (value)=>{
+//  if(!value){
+//   return(
+//    <div className='alert alert-danger' role='alert'>
+//     This field is required
+//    </div>
+//   );
+//  }
+// }
 
 const Login = (props)=>{
  const form = useRef();
@@ -51,6 +51,7 @@ const Login = (props)=>{
     },
     (error)=>{
      const resMessage = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+     console.log(resMessage)
      setLoading(false);
     }
    );

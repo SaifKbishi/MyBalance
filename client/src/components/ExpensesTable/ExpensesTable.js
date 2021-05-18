@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import MonthViewInYear from '../MonthViewInYear/MonthViewInYear'
-import MonthView from '../MonthView/MonthView'
+import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
 import axios from 'axios' ;
 import './ExpensesTable.css';
 import * as ReactBootStrap from 'react-bootstrap';

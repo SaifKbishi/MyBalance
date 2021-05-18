@@ -23,10 +23,6 @@ const MonthViewInYear =(props)=>{
   fetchMonthData(props.month);
  },[month]);
 
- const handleChange = (e)=>{
-  console.log(Number(e.target.value));
-  setMonth(e.target.name= Number(e.target.value));
- }//handleChange
  const history = useHistory();
 
  const renderAnExpense = (exp, index)=>{
