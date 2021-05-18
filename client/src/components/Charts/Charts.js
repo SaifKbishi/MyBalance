@@ -39,13 +39,19 @@ const Charts = ()=>{
      }
    ]
  });
- // for(let i=0; i<datasets.data.length; i++){}
+ // for(let i=0; i<chart.datasets.data.length; i++){
+ //  if(datasets.data[i] > 0){
+ //   backgroundColor = chartColors.blue;
+ //  }else{
+ //   backgroundColor = chartColors.red;
+ //  }
+ // }
  } 
   
  const getSumByMonth = async ()=>{
   for(let month=1; month<=12; month++){
    let aMonthSum=0;
-   expense.forEach((exp)=>{
+    expense.forEach((exp)=>{
     let adate = new Date(exp.date);
     if(Number(adate.getMonth()+1) ==month ){
      // console.log(Number(adate.getMonth())+1 ,'=', month, exp.name);
@@ -56,11 +62,10 @@ const Charts = ()=>{
      }
     }
    });
-   monthesSummArray.push(aMonthSum);   
+    monthesSummArray.push(aMonthSum);   
   }
   console.log('monthesSummArray: ',monthesSummArray);
-  // console.log(chart)
-  console.log(chart.datasets);
+  console.log(monthesSummArray)
  }//getSumByMonth
 
  return (

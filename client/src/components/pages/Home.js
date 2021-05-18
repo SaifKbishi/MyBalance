@@ -4,7 +4,7 @@ import ExpenseForm from '../ExpenseForm/ExpenseForm';
 import ExpensesTable from '../ExpensesTable/ExpensesTable';
 import AuthService from "../../services/auth.service";
 
-function Home() { 
+function Home(){
  const [currentUser, setCurrentUser] = useState(undefined);
  useEffect(()=>{
    const user = AuthService.getCurrentUser();
@@ -23,6 +23,6 @@ function Home() {
    <ExpensesTable />
   </div>
  );
-}
+}//Home
 
 export default Home;
