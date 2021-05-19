@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const expenseController = require('../controllers/ExpenseController');
 
-
 //create new expense
 router.post('/addExpense/',async (req, res)=>{
  expenseController.addExpense(req, res);
@@ -15,6 +14,7 @@ router.get('/allExpenses/', (req, res)=>{
 });
 
 router.get('/viewbymonth/:month', (req, res)=>{ 
+ // console.log('viewbymonth from routes', req.params.month)
  expenseController.viewbymonth(req, res);
 });
 

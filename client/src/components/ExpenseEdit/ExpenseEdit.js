@@ -1,21 +1,28 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios'; 
 import './ExpenseEdit.css';
-// import ExpensesTable from '../ExpensesTable/ExpensesTable'
+import TextInput from '../utils/TextInput';
+import RadioButton from '../utils/RadioButton';
 
 const ExpenseEdit=(props)=>{
  const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
  const [expense, setExpense] = useState(initialState);
 
  useEffect( ()=>{
+  const source = axios.CancelToken.source();
    const getExpenseItem = async ()=>{
     try{
-     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
+     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
      setExpense(response.data);
-    }catch(error){console.log('error editing: ', error)}
+    }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
   }
-  getExpenseItem();
- },[]);
+
+  getExpenseItem()
+  return () => {
+    source.cancel()
+}
+  
+ },[]);//useEffect
 
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});
@@ -40,42 +47,15 @@ const ExpenseEdit=(props)=>{
   <div>
     <h2>Editing {expense.name}</h2>
    <form className="expensesForm" onSubmit={handleEditSubmit}>
-    <span className="radioBtns" onChange={handleChange}>{/*Radio buttons*/}
-      <div className="input-radio"> 
-        <input type="radio" id="expensepay"
-        name="expenseType"
-        value={expense.expense} 
-        /> 
-        <label id="expenseLabel" htmlFor ="expensepay">Add Expense</label>
-      </div>
-      <div className="input-radio">
-        <input type="radio" id="income"
-        name="expenseType" 
-        value={expense.income} />
-        <label id="incomeLabel" htmlFor ="income">Add Income</label>
-      </div>
+    <span className="radioBtns" onChange={handleChange}>{/*Radio buttons*/}    
+      <RadioButton divCN="input-radio" inputType="radio" inputID="expensepay" name="expenseType" value={expense.expense}  labelID="expenseLabel" htmlFor="expensepay" labelText="Add Expense"/>
+      <RadioButton divCN="input-radio" inputType="radio" inputID="income" name="expenseType" value={expense.income}  labelID="incomeLabel" htmlFor="income" labelText="Add Income"/>      
     </span>
-    
-    <div className="form-group">
-     <label>Date: </label>
-     <input name="date" type="date" value={expense.date} onChange={handleChange} className="form-control" />
-    </div>
-    <div className="form-group">
-     <label>Name: </label>
-     <input name="name" type="text" value={expense.name} onChange={handleChange} className="form-control" />
-    </div>
-    <div className="form-group">
-     <label>Amount: </label>
-     <input name="amount" type="text" value={expense.amount} onChange={handleChange} className="form-control" />
-    </div>
-    <div className="form-group">
-     <label>Description: </label>
-     <input name="description" type="text" value={expense.description} onChange={handleChange} className="form-control" />
-    </div>
-    {/* <div className="form-group">
-     <label>Repeats: </label>
-     <input name="repeats" type="text" value={expense.repeats} onChange={handleChange} className="form-control" />
-    </div> */}
+    <TextInput divCN="form-group" labelText="Date: " name="date"  type="date" value={expense.date} onChange={handleChange}  inputCN="form-control" />
+    <TextInput divCN="form-group" labelText="Name: " name="name"  type="text" value={expense.name} onChange={handleChange}  inputCN="form-control" required="required"/>
+    <TextInput divCN="form-group" labelText="Amount: " name="amount"  type="text" value={expense.amount} onChange={handleChange}  inputCN="form-control" required="required"/>
+    <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
+    <TextInput divCN="form-group" labelText="Repeats: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
     <div className="btn-group">
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>

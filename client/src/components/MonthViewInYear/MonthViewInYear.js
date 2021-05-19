@@ -14,7 +14,8 @@ const MonthViewInYear =(props)=>{
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);
     const dataArray = data.data;
-    dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
+    // dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
+    dataArray.sort((a,b)=>(a.repeats > b.repeats)?1:-1);
     setExpense(dataArray);
    }catch(error){
     console.log('MonthView, could not fetch data', error);
@@ -27,8 +28,10 @@ const MonthViewInYear =(props)=>{
 
  const renderAnExpense = (exp, index)=>{
   return(
-   <tr key={exp._id} className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
-    onClick={(e)=>(console.log('index',index, '_id', expense[index]._id), history.push(`/updateExpense/${ expense[index]._id}`))} >
+   <tr key={exp._id} 
+   // className={`expensesItem + ${exp.expenseType} ? 'income' : 'expense'`} 
+   className={`expensesItem + ${exp.repeats === 1 ? 'yellow' : exp.repeats === 2 ? 'green' : exp.repeats === 3 ? 'red' : exp.repeats === 4 ? 'white' : exp.repeats === 5 ? 'darkred': exp.repeats === 6 ? 'mediumblue': exp.repeats === 7 ? 'darkgray': exp.repeats === 8 ? 'yellowgreen': exp.repeats === 9 ? 'whitesmoke': exp.repeats === 10 ? 'indigo': exp.repeats === 11 ? 'gold': exp.repeats === 12 ? 'olive': exp.repeats === 13 ? 'slateblue': 'white' }`} 
+    onClick={(e)=>( history.push(`/updateExpense/${ expense[index]._id}`))} > 
     <td>{exp.name}</td>
     <td>{exp.amount}</td>
    </tr>

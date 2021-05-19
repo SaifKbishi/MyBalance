@@ -12,7 +12,7 @@ const ExpenseMonth = mongoose.model('expMonth',{
  },
  expenseType:{
   type:String,
-  // required: [true, 'you must set the expense type']
+  required: [true, 'you must set the expense type']
  },
  details:[
     {

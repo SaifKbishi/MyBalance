@@ -3,22 +3,28 @@ import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
 import axios from 'axios' ;
 import './ExpensesTable.css';
 import * as ReactBootStrap from 'react-bootstrap';
-import { useHistory  } from 'react-router-dom';
+import { useHistory,Link  } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
+  // console.log('props: ',props)
  const [expense, setExpense] = useState([]);
  const history = useHistory();
 
  useEffect(()=>{
+  const abortController = new AbortController();
+  const signal = abortController.signal;
   const fetchData = async() =>{
    try{
-    const data = await axios.get('/exp/allExpenses/');
+    const data = await axios.get('/exp/allExpenses/', {signal:signal});
     setExpense(data.data);
    }catch(error){
     console.log('could not fetch data', error);
    }
   }
   fetchData();
+  return function cleanup(){
+    abortController.abort();
+  }
  },[expense]);
  
  const selectMonth = async (e)=>{
@@ -32,7 +38,8 @@ const ExpensesTable =(props)=>{
      <ReactBootStrap.Table bordered hover size="sm" variant="dark">
     <thead>
       <tr className="monthDropDown" onClick={selectMonth}>
-        <th value="1">January</th>
+        <th value="1"><Link to={`/exp/viewbymonth/${1}`}>January</Link></th>
+        {/* <th value="1">January</th> */}
         <th value="2">February</th>
         <th value="3">March</th>
         <th value="4">April</th>

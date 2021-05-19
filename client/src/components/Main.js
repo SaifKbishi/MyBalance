@@ -20,6 +20,7 @@ function Main() {
    <Switch>
     <Route exact path={['/', '/Home']} component={Home}/>
     <Route exact path={'/viewbymonth/'} component={MonthView}/>
+    <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
     <Route exact path={'/allExpenses/'} component={ExpensesTable}/>
     <Route exact path={'/charts/'} component={Charts}/>
     <Route exact path={'/addExpense/'} component={ExpenseForm}/>

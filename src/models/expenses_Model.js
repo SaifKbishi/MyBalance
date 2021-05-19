@@ -8,7 +8,7 @@ const Expense = mongoose.model('expItem',{
   },
   expenseType:{
     type:String,
-    // required: [true, 'you must set the expense type']
+    required: [true, 'you must set the expense type']
   },
   expense:{
     type: String
@@ -28,7 +28,6 @@ const Expense = mongoose.model('expItem',{
   },
   description:{
     type: String,
-    // required:[false, 'it can help if you add a description'],
     min:0
   },
   repeats:{
