@@ -55,7 +55,7 @@ const ExpenseEdit=(props)=>{
     <TextInput divCN="form-group" labelText="Name: " name="name"  type="text" value={expense.name} onChange={handleChange}  inputCN="form-control" required="required"/>
     <TextInput divCN="form-group" labelText="Amount: " name="amount"  type="text" value={expense.amount} onChange={handleChange}  inputCN="form-control" required="required"/>
     <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
-    <TextInput divCN="form-group" labelText="Repeats: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
+    <TextInput divCN="form-group" labelText="Category: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
     <div className="btn-group">
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>

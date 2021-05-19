@@ -21,7 +21,7 @@
 .input-radio{
   display: inline-block;
   margin-right: 10px;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 input[type=radio] {
   visibility: hidden;

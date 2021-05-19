@@ -48,6 +48,7 @@ const MonthView =(props)=>{
     <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.name}</td>
     <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.amount}</td>
     <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.description}</td>
+    <td onClick={(e)=>(history.push(`/updateExpense/${ expense[index]._id}`))}>{exp.repeats}</td>
     </>
    </tr>
   );
@@ -86,6 +87,7 @@ const MonthView =(props)=>{
          <th>Expense Name</th>
          <th>Amount in $</th>
          <th>Description</th>
+         <th>Category</th>
         </tr>
       </thead>
       <tbody>

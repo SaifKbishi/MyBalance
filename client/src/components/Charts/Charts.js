@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Bar} from 'react-chartjs-2';
 import './Charts.css'
-
-var chartColors = {
- red: 'rgb(255, 99, 132)',
- blue: 'rgb(54, 162, 235)'
+const bgColorArray=[];
+const chartColors = {
+ red: 'rgb(255, 00, 00)',
+ green: 'rgb(0, 204, 0)'
 };
 
 const Charts = ()=>{
@@ -23,8 +23,19 @@ const Charts = ()=>{
    }
   }
   fetchData();
-  chart();
+  getSumByMonth();
+  colorArray();
+  chart();  
  },[]); 
+
+ const colorArray = async ()=>{
+  for(let i=0; i<=12; i++){
+    if(monthesSummArray[i]>0)
+    {bgColorArray[i] = chartColors.green;}
+    else{bgColorArray[i] = chartColors.red;}    
+  }
+  console.log('61 colorArray :',bgColorArray );
+ }
 
  const chart= async()=>{
   setstate({
@@ -32,20 +43,13 @@ const Charts = ()=>{
    datasets: [
      {
        label: 'balance by month 2021',
-       backgroundColor: 'rgba(0,128,0,1)',
+       backgroundColor: bgColorArray,
        borderColor: 'rgba(0,0,0,1)',
-       borderWidth: 2,
-       data: monthesSummArray// [65, -59, 80, 81, 56,65, -29, 80, 81, 56, 20, 33]
+       borderWidth: 1,
+       data: monthesSummArray
      }
    ]
  });
- // for(let i=0; i<chart.datasets.data.length; i++){
- //  if(datasets.data[i] > 0){
- //   backgroundColor = chartColors.blue;
- //  }else{
- //   backgroundColor = chartColors.red;
- //  }
- // }
  } 
   
  const getSumByMonth = async ()=>{
@@ -54,7 +58,6 @@ const Charts = ()=>{
     expense.forEach((exp)=>{
     let adate = new Date(exp.date);
     if(Number(adate.getMonth()+1) ==month ){
-     // console.log(Number(adate.getMonth())+1 ,'=', month, exp.name);
      if(exp.expenseType === 'income') {
       aMonthSum+=exp.amount;
      }else{
@@ -64,16 +67,15 @@ const Charts = ()=>{
    });
     monthesSummArray.push(aMonthSum);   
   }
-  console.log('monthesSummArray: ',monthesSummArray);
-  console.log(monthesSummArray)
+  // console.log('monthesSummArray: ',monthesSummArray);
  }//getSumByMonth
 
  return (
-  getSumByMonth(),
   <div className="charts">
     <Bar
       data={state}
-      options={{
+      options={
+		  {
         title:{
           display:true,
           text:'balance after expenses',
