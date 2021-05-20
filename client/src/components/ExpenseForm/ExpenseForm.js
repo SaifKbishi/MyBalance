@@ -10,7 +10,7 @@ const ExpenseForm=()=>{
 
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});
- } 
+ }
  const handleSubmit=(e)=>{
    e.preventDefault();
    if(!expense.name || !expense.amount  ) return;   
@@ -42,14 +42,10 @@ const ExpenseForm=()=>{
       <option value="1">Last Balance - יתרה</option>
       <option value="2">Salary - משכורת</option>
       <option value="3">Monthly Expenses - תשלומים קבועים</option>
-      {/* <option value="4">Gas - דלק</option>
-      <option value="5">May</option> */}
       <option value="6">Gas - דלק</option>
       <option value="7">Food/Babay - מזון ותינוק</option>
       <option value="8">Local Taxes - מ"מ ג'וליס</option>
       <option value="9">Electricity - חשמל</option>
-      {/* <option value="10">October</option> */}
-      {/* <option value="11">November</option> */}
       <option value="13">CC - תוספות אשראי</option>
    </select>
    </label>

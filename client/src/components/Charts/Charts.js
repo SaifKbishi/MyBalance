@@ -42,7 +42,7 @@ const Charts = ()=>{
       monthesSummArray.push(aMonthSum);   
     }
     setTimeout(()=>{
-    }, 2000);
+    }, 2002); 
     console.log('monthesSummArray: ',monthesSummArray);
    }//getSumByMonth
   getSumByMonth();

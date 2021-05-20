@@ -75,7 +75,7 @@ const MonthView =(props)=>{
 
  return(
   <div className="monthView">
-   <select onChange={handleChange} value={month}>
+   <select onChange={handleChange} value={month}> 
     <option value="-1">select month</option>
     <option value="1">January</option>
     <option value="2">February</option>
