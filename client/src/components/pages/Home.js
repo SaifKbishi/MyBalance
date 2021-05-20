@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 // import './home.css'
 import ExpenseForm from '../ExpenseForm/ExpenseForm';
 import ExpensesTable from '../ExpensesTable/ExpensesTable';
+import ExpensesTable2 from '../ExpensesTable/ExpensesTable2';
 import AuthService from "../../services/auth.service";
 
 function Home(){
@@ -21,6 +22,7 @@ function Home(){
    {currentUser && (<ExpenseForm />)}
    <hr/>
    <ExpensesTable />
+   {/* <ExpensesTable2 /> */}
   </div>
  );
 }//Home

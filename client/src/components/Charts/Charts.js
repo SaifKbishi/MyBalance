@@ -11,19 +11,21 @@ const chartColors = {
 
 const Charts = ()=>{
  const [state, setstate] = useState({});
- const [expense, setExpense] = useState([]);
- 
+ const [expense, setExpense] = useState([]); 
 
  useEffect(()=>{
   const fetchData = async() =>{
    try{
-    const data = await axios.get('/allExpenses/');    
+    const data = await axios.get('/exp/allExpenses/');    
     setExpense(data.data);
+    console.log('data.data',data.data);
    }catch(error){
     console.log('could not fetch data', error);
    }
   }
   fetchData();
+  console.log('fetchData')
+
   const getSumByMonth = async ()=>{
     for(let month=1; month<=12; month++){
      let aMonthSum=0;
@@ -39,7 +41,11 @@ const Charts = ()=>{
      });
       monthesSummArray.push(aMonthSum);   
     }
-    // console.log('monthesSummArray: ',monthesSummArray);
+    setTimeout(()=>{
+
+    }, 1000);
+    console.log('monthesSummArray: ',monthesSummArray);
+
    }//getSumByMonth
   getSumByMonth();
 
@@ -68,12 +74,6 @@ const Charts = ()=>{
    } 
   chart();  
  },[]); 
-
- 
-
-
-  
-
 
  return (
   <div className="charts">

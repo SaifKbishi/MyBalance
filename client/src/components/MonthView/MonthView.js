@@ -7,10 +7,20 @@ import './MonthView.css';
 const MonthView =(props)=>{
  const [expense, setExpense] = useState([]);
  const date = new Date();
- const [month, setMonth] = useState(date.getMonth()+1);
+//  const [month, setMonth] = useState(date.getMonth()+1);
+ const [month, setMonth] = useState();
  const history = useHistory();
 
- useEffect(()=>{
+ const settheMonth=()=>{
+  if(props.match.params.month){
+    setMonth(props.match.params.month)
+  }else{
+    setMonth(date.getMonth()+1);
+  }
+ }
+ 
+
+ useEffect((props)=>{   
   const fetchMonthData = async(month) =>{   
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);
@@ -22,6 +32,7 @@ const MonthView =(props)=>{
    }
   }
   fetchMonthData(month);
+  settheMonth();
  },[month]);
 
  const handleChange = (e)=>{
@@ -64,7 +75,7 @@ const MonthView =(props)=>{
 
  return(
   <div className="monthView">
-   <select onChange={handleChange}>
+   <select onChange={handleChange} value={month}>
     <option value="-1">select month</option>
     <option value="1">January</option>
     <option value="2">February</option>
@@ -96,6 +107,7 @@ const MonthView =(props)=>{
          <th></th>
          <th></th>
          <th>{(getSum()>0) ? -getSum() : getSum()  } $</th>
+         <th></th>
          <th></th>
         </tr>
       </tbody>

@@ -56,6 +56,20 @@ const ExpenseEdit=(props)=>{
     <TextInput divCN="form-group" labelText="Amount: " name="amount"  type="text" value={expense.amount} onChange={handleChange}  inputCN="form-control" required="required"/>
     <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
     <TextInput divCN="form-group" labelText="Category: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
+    <label id="catLbl">
+    Category: 
+    <select name="repeats"  onChange={handleChange}>
+      <option value="-1">Select Category</option>
+      <option value="1">Last Balance - יתרה</option>
+      <option value="2">Salary - משכורת</option>
+      <option value="3">Monthly Expenses - תשלומים קבועים</option>
+      <option value="6">Gas - דלק</option>
+      <option value="7">Food/Babay - מזון ותינוק</option>
+      <option value="8">Local Taxes - מ"מ ג'וליס</option>
+      <option value="9">Electricity - חשמל</option>
+      <option value="13">CC - תוספות אשראי</option>
+   </select>
+   </label>
     <div className="btn-group">
      <input type="submit" value="Submit" className="btn btn-primary" />
     </div>

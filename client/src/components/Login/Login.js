@@ -5,17 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './Login.css';
 // import './style.js';
 
-
-// const required = (value)=>{
-//  if(!value){
-//   return(
-//    <div className='alert alert-danger' role='alert'>
-//     This field is required
-//    </div>
-//   );
-//  }
-// }
-
 const Login = (props)=>{
  const form = useRef();
 

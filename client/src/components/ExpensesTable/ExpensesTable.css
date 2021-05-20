@@ -112,7 +112,9 @@ a, a:visited{
  border-top: 10px solid var(--extra-color);
  transform: rotate(45deg);
 }
-
+.yearView thead .monthDropDown:hover{
+ cursor: pointer;
+}
 .container{
  max-width: 95% !important;
 }

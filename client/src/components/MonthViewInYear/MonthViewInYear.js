@@ -33,7 +33,7 @@ const MonthViewInYear =(props)=>{
    className={`expensesItem + ${exp.repeats === 1 ? 'yellow' : exp.repeats === 2 ? 'green' : exp.repeats === 3 ? 'red' : exp.repeats === 4 ? 'white' : exp.repeats === 5 ? 'darkred': exp.repeats === 6 ? 'mediumblue': exp.repeats === 7 ? 'darkgray': exp.repeats === 8 ? 'yellowgreen': exp.repeats === 9 ? 'whitesmoke': exp.repeats === 10 ? 'indigo': exp.repeats === 11 ? 'gold': exp.repeats === 12 ? 'olive': exp.repeats === 13 ? 'slateblue': 'slateblue' }`} 
     onClick={(e)=>( history.push(`/updateExpense/${ expense[index]._id}`))} > 
     <td>{exp.name}</td>
-    <td>{exp.amount}</td>
+    <td>{exp.repeats ===1?'-':''}{exp.amount}</td>
    </tr>
   );
  }//renderAnExpense

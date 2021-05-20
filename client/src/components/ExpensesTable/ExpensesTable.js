@@ -6,7 +6,6 @@ import * as ReactBootStrap from 'react-bootstrap';
 import { useHistory,Link  } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
-  // console.log('props: ',props)
  const [expense, setExpense] = useState([]);
  const history = useHistory();
 
@@ -37,9 +36,8 @@ const ExpensesTable =(props)=>{
   <div className="yearView">
      <ReactBootStrap.Table bordered hover size="sm" variant="dark">
     <thead>
-      <tr className="monthDropDown" onClick={selectMonth}>
-        <th value="1"><Link to={`/exp/viewbymonth/${1}`}>January</Link></th>
-        {/* <th value="1">January</th> */}
+      <tr className="monthDropDown" onClick={selectMonth}>        
+        <th value="1">January</th>
         <th value="2">February</th>
         <th value="3">March</th>
         <th value="4">April</th>

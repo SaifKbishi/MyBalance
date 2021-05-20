@@ -16,5 +16,5 @@ exports.userBoard = (req, res) => {
 };
 
 exports.adminBoard = (req, res) => {
- res.status(200).send("Admin Content. controllers/userController");
+ res.status(200).send("Admin dashboard. here you can modify Table  colors. <br/> ");
 };

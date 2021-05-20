@@ -10,9 +10,14 @@ const Register = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
+  // const onChangeIsadmin = (e)=>{
+  //   const isAdmin = e.target.value;
+  //   setIsAdmin(isAdmin);
+  // }
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -30,7 +35,6 @@ const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
     setMessage("");
     setSuccessful(false);
 
@@ -47,7 +51,7 @@ const Register = (props) => {
           setSuccessful(false);
         }
       );
-  };
+  };//handleRegister
 
   return (
     document.title = 'My Balance | Register',
@@ -62,6 +66,7 @@ const Register = (props) => {
               <TextInput divCN="form-group" labelText="Username" name="username"  type="text" value={username} onChange={onChangeUsername}  inputCN="form-control"  required="required"/>        
               <TextInput divCN="form-group" labelText="Email" name="email"  type="text" value={email} onChange={onChangeEmail}  inputCN="form-control" required="required"/>
               <TextInput divCN="form-group" labelText="Password" name="password"  type="password" value={password} onChange={onChangePassword}  inputCN="form-control" required="required"/>
+              {/* <TextInput divCN="form-group" labelText="isAdmin" name="isAdmin"  type="isAdmin" value={isAdmin} onChange={onChangeIsadmin}  inputCN="form-control" required="required"/> */}
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>

@@ -16,6 +16,21 @@
   width: 200px;
   text-align: left;
  }
+ .homepage .expensesForm div:nth-child(6) {
+   display: none;
+ }
+ #ExpenseFormSubmitBtn{
+   padding: 5px;
+ }
+ .expensesForm select{
+  padding: 7px;
+  margin: 0px 8px;
+  border-color: #ced4da;
+  border-radius: 5px;
+ }
+ #catLbl{
+   margin-top: 0px;
+ }
 
  /* radio buttons as buttons */
 .input-radio{

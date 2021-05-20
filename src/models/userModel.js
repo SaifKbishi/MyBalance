@@ -4,7 +4,12 @@ const validator = require('validator');
 const User = mongoose.model(
   "User",
   new mongoose.Schema({
-    username: String,
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+    },
     email: {
       type: String,
       required: true,
