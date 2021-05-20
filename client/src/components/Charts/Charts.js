@@ -42,10 +42,8 @@ const Charts = ()=>{
       monthesSummArray.push(aMonthSum);   
     }
     setTimeout(()=>{
-
-    }, 1000);
+    }, 2000);
     console.log('monthesSummArray: ',monthesSummArray);
-
    }//getSumByMonth
   getSumByMonth();
 

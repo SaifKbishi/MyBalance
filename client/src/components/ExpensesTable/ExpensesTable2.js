@@ -21,11 +21,29 @@ const ExpensesTable2 =(props)=>{
    }
   }
   fetchData();
+  getSumByMonth();
   return function cleanup(){
     abortController.abort();
   }
  },[expense]);
  
+ const getSumByMonth = async (month)=>{
+  let aMonthSum=0;
+  expense.forEach((exp)=>{
+   let adate = new Date(exp.date);
+   if(Number(adate.getMonth()+1) ===month ){
+    if(exp.expenseType === 'income') {
+     aMonthSum+=exp.amount;
+    }else{
+     aMonthSum-=exp.amount;
+    }
+    return aMonthSum;
+   }else return;
+ });
+ setTimeout(()=>{
+ }, 1000);
+}//getSumByMonth
+
  const selectMonth = async (e)=>{
    console.log('month value: ', e.target.cellIndex+1)
    const selectedMonth=e.target.cellIndex+1;
@@ -48,7 +66,7 @@ const ExpensesTable2 =(props)=>{
         <th value="9">September</th>
         <th value="10">October</th>
         <th value="11">November</th>
-       <th value="12">December</th>
+        <th value="12">December</th>
       </tr>
     </thead>
     <tbody>
@@ -63,7 +81,7 @@ const ExpensesTable2 =(props)=>{
       <td><MonthViewInYear month='9'/></td>
       <td><MonthViewInYear month='10'/></td>
       <td><MonthViewInYear month='11'/></td>
-      <td><MonthViewInYear month='12'/></td>
+      <td>{getSumByMonth(12)}</td>
     </tbody>
    </ReactBootStrap.Table>
   <hr/>  
