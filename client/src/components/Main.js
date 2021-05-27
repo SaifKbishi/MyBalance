@@ -25,8 +25,8 @@ function Main() {
     <Route exact path={'/charts/'} component={Charts}/>
     <Route exact path={'/addExpense/'} component={ExpenseForm}/>
     <Route exact path={'/updateExpense/:_id/'} component={ExpenseEdit}/>    
-    <Route exact path={'/exp/login'} component={Login}/>
-    <Route exact path={'/Register'} component={Register}/>
+    <Route exact path={'/login'} component={Login}/>
+    <Route exact path={'/register'} component={Register}/>
     <Route exact path={'/profile'} component={Profile}/>
     <Route exact path={'/user'} component={BoardUser}/>
     <Route exact path={'/admin'} component={BoardAdmin}/>
