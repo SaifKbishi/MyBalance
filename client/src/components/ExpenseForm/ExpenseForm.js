@@ -36,7 +36,7 @@ const ExpenseForm=()=>{
     <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
     <TextInput divCN="form-group" labelText="Category : " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
     <label id="catLbl">
-    Category: 
+    Category:
     <select name="repeats"  onChange={handleChange}>
       <option value="-1">Select Category</option>
       <option value="1">Last Balance - יתרה</option>

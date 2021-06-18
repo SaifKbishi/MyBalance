@@ -8,12 +8,12 @@
   margin-bottom: 0.2rem !important;
  }
  .expensesForm .form-group label{
-  width: 100px;
+  width: 120px;
   text-align: left;
   align-self: center;
  }
  .expensesForm .form-group input{
-  width: 200px;
+  width: 295px;
   text-align: left;
  }
  .homepage .expensesForm div:nth-child(6) {
@@ -24,7 +24,7 @@
  }
  .expensesForm select{
   padding: 7px;
-  margin: 0px 8px;
+  margin: 0px 0px 0px 54px;
   border-color: #ced4da;
   border-radius: 5px;
  }
