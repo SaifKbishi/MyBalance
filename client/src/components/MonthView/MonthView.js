@@ -20,7 +20,7 @@ const MonthView =(props)=>{
  }
  
 
- useEffect((props)=>{   
+ useEffect(()=>{
   const fetchMonthData = async(month) =>{   
    try{
     const data = await axios.get(`/exp/viewbymonth/${month}`);

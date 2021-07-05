@@ -3,7 +3,7 @@ import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
 import axios from 'axios' ;
 import './ExpensesTable.css';
 import * as ReactBootStrap from 'react-bootstrap';
-import { useHistory,Link  } from 'react-router-dom';
+import { useHistory  } from 'react-router-dom';
 
 const ExpensesTable =(props)=>{
  const [expense, setExpense] = useState([]);

@@ -22,7 +22,7 @@ const ExpenseEdit=(props)=>{
     source.cancel()
 }
   
- },[]);//useEffect
+ },[props.match.params._id]);//useEffect
 
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});

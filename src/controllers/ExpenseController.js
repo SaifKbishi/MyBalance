@@ -58,41 +58,36 @@ const getExpenseByID = async (req, res)=>{
  }
 };
 // original
-const viewbymonth = async (req, res)=>{
- try{
-  const month = req.params.month;
-  const allExpData = await Expense.find({});
-  console.log('65 ',allExpData)
-  const filteredData = allExpData.filter(byMonth=> {
-   let m = byMonth.date.getMonth()+1;
-    if(m == month){
-     return byMonth;
-    }else{
-     return false;
-    }
-  });
-  res.status(200).send(filteredData);
- }catch(error){
-  console.log('EC Did not find that month :',req.params.month);
-  res.status(400).send(error);
- }
-};
-
-// const viewbymonth = async (req, res)=>{ 
+// const viewbymonth = async (req, res)=>{
 //  try{
-//   let month = Number(req.params.month);  
-//   let query = [{'$project': {'name': 1, 'expenseType':1, 'date': 1, 'amount': 1,'month': {'$month': '$date'}}}, {'$match': {'month': month}}];  
-//   const allExpData = await Expense.aggregate(query);
-//  console.log('86', allExpData);
-//   res.status(200).send(allExpData);
+//   const month = req.params.month;
+//   const allExpData = await Expense.find({});
+//   const filteredData = allExpData.filter(byMonth=> {
+//    let m = byMonth.date.getMonth()+1;
+//     if(m == month){
+//      return byMonth;
+//     }else{
+//      return false;
+//     }
+//   });
+//   res.status(200).send(filteredData);
 //  }catch(error){
 //   console.log('EC Did not find that month :',req.params.month);
 //   res.status(400).send(error);
 //  }
 // };
 
-
-
+const viewbymonth = async (req, res)=>{ 
+ try{
+  let month = Number(req.params.month);  
+  let query = [{'$project': {'name': 1, 'expenseType':1, 'date': 1, 'repeats':1, 'amount': 1,'month': {'$month': '$date'}}}, {'$match': {'month': month}}];  
+  const allExpData = await Expense.aggregate(query);
+  res.status(200).send(allExpData);
+ }catch(error){
+  console.log('EC Did not find that month :',req.params.month);
+  res.status(400).send(error);
+ }
+};
 
 module.exports = {
  allExpenses,
