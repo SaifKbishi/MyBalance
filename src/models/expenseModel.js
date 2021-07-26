@@ -41,19 +41,3 @@ const ExpenseMonth = mongoose.model('expMonth',{
 
 module.exports = ExpenseMonth;
 
-
-/*
-const ExpenseMonth = mongoose.model('expMonth',{
- 
- {
-  year:
-  month:
-  expenseType:
-  details:{
-   name:
-   Amount:
-   description:
-   repeats:
-  }
- }
-*/
