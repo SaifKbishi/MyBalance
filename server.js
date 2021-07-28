@@ -13,7 +13,8 @@ app.use('/exp', expRoute);
 const publicDirectory = path.join(__dirname, "client/build");
 app.use(express.static(publicDirectory));
 
-require('./src/db/mongoose'); 
+// require('./src/db/mongoose');
+require('./src/config/mongoose');
 app.use(express.static('./src/public'));
 
 const db = require("./src/models");

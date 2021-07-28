@@ -24,7 +24,8 @@ const ExpensesTable =(props)=>{
   return function cleanup(){
     abortController.abort();
   }
- },[expense]);
+ },[]);
+//  },[expense]);
  
  const selectMonth = async (e)=>{
    console.log('month value: ', e.target.cellIndex+1)

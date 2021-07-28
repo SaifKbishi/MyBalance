@@ -13,18 +13,26 @@ router.get('/allmonthes/',async (req, res)=>{
   console.log('could not fetch all Month expenses');
   res.status(400).send(error);
  }
-});
+}).get('/monthview/:id',async (req, res)=>{
+  try{
+   const month = await ExpenseMonth.findById(req.params.id);
+   res.status(200).send(month);
+  }catch(error){
+   console.log('Did not find that month with ID:',req.params.id);
+   res.status(400).send(error);
+  }
+ });
 
 //retrive by Month             //READ
-router.get('/monthview/:id',async (req, res)=>{
- try{
-  const month = await ExpenseMonth.findById(req.params.id);
-  res.status(200).send(month);
- }catch(error){
-  console.log('Did not find that month with ID:',req.params.id);
-  res.status(400).send(error);
- }
-});
+// .get('/monthview/:id',async (req, res)=>{
+//  try{
+//   const month = await ExpenseMonth.findById(req.params.id);
+//   res.status(200).send(month);
+//  }catch(error){
+//   console.log('Did not find that month with ID:',req.params.id);
+//   res.status(400).send(error);
+//  }
+// });
 
 //create new month          //Create
 router.post('/newmonth/',async (req, res)=>{

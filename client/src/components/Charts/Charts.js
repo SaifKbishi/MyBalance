@@ -71,7 +71,8 @@ const Charts = ()=>{
    });
    } 
   chart();  
- },[expense]); 
+ },[]); 
+//  },[expense]); 
 
  return (
   <div className="charts">
