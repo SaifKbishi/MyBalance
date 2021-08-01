@@ -4,7 +4,7 @@ import AuthService from "../../services/auth.service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Register.css';
 
-const Register = (props) => {
+const Register = () => {
   const form = useRef();
 
   const [username, setUsername] = useState("");

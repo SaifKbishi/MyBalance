@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
 import axios from 'axios' ;
 import './ExpensesTable.css';
-import * as ReactBootStrap from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import { useHistory,Link  } from 'react-router-dom';
 
 const ExpensesTable2 =(props)=>{
@@ -49,10 +49,16 @@ const ExpensesTable2 =(props)=>{
    const selectedMonth=e.target.cellIndex+1;
    history.push(`/viewbymonth/${selectedMonth}`)
  }
-
+ const myMonthViewInYear =()=>{
+  let yearMonthes = [];
+  for(let i=1; i<=12; i++){
+    yearMonthes.push(<td key={i}><MonthViewInYear month={i}/></td>);
+  }
+  return yearMonthes;
+ }
  return(
   <div className="yearView">
-     <ReactBootStrap.Table bordered hover size="sm" variant="dark">
+     <Table bordered hover size="sm" variant="dark">
     <thead>
       <tr className="monthDropDown" onClick={selectMonth}>        
         <th value="1">January</th>
@@ -70,20 +76,10 @@ const ExpensesTable2 =(props)=>{
       </tr>
     </thead>
     <tbody>
-      <td><MonthViewInYear month='1'/></td>
-      <td><MonthViewInYear month='2'/></td>
-      <td><MonthViewInYear month='3'/></td>
-      <td><MonthViewInYear month='4'/></td>
-      <td><MonthViewInYear month='5'/></td>
-      <td><MonthViewInYear month='6'/></td>
-      <td><MonthViewInYear month='7'/></td>
-      <td><MonthViewInYear month='8'/></td>
-      <td><MonthViewInYear month='9'/></td>
-      <td><MonthViewInYear month='10'/></td>
-      <td><MonthViewInYear month='11'/></td>
-      <td>{getSumByMonth(12)}</td>
+      {myMonthViewInYear()}    
+      {/* <td>{getSumByMonth(12)}</td> */}
     </tbody>
-   </ReactBootStrap.Table>
+   </Table>
   <hr/>  
   </div>
  );

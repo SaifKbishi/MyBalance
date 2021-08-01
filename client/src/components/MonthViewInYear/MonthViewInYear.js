@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios' ;
 import './MonthViewInYear.css';
-import * as ReactBootStrap from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import { useHistory  } from 'react-router-dom';
 
 const MonthViewInYear =(props)=>{
@@ -9,18 +9,18 @@ const MonthViewInYear =(props)=>{
  const date = new Date();
  const [month, setMonth] = useState(date.getMonth()+1);
 
- useEffect(()=>{
-  const fetchMonthData = async(month) =>{
-   try{
-    const data = await axios.get(`/exp/viewbymonth/${month}`);
-    const dataArray = data.data;
-    // dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
-    dataArray.sort((a,b)=>(a.repeats > b.repeats)?1:-1);
-    setExpense(dataArray);
-   }catch(error){
-    console.log('MonthView, could not fetch data', error);
-   }
+ const fetchMonthData = async(month) =>{
+  try{
+   const data = await axios.get(`/exp/viewbymonth/${month}`);
+   const dataArray = data.data;
+   dataArray.sort((a,b)=>(a.repeats > b.repeats)?1:-1);
+   setExpense(dataArray);
+  }catch(error){
+   console.log('MonthView, could not fetch data', error);
   }
+ }
+
+ useEffect(()=>{
   fetchMonthData(props.month);
  },[month]);
 
@@ -42,11 +42,11 @@ const MonthViewInYear =(props)=>{
 
  return(
   <div>
-   <ReactBootStrap.Table bordered hover size="sm" options={options}>      
+   <Table bordered hover size="sm" options={options}>      
     <tbody>
      {expense.map(renderAnExpense)}
     </tbody>  
-   </ReactBootStrap.Table>
+   </Table>
   </div>  
  );
 }//ExpensesTable

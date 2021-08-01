@@ -14,29 +14,17 @@ const Charts = ()=>{
  const [expense, setExpense] = useState([]); 
  const [chartData, setChartData] = useState([]);
 
- const fetchData = async () =>{
-  console.log('hello fetchData');
+ const fetchData = async() =>{
     try{
-      const data = await axios.get('/exp/allExpenses/');      
+      const data = await axios.get('/exp/allExpenses/');
       setChartData(data.data);
+      console.log('data.data',data.data);      
+     //  setExpense(data.data);     
      }catch(error){
       console.log('could not fetch data', error);
      }
-     console.log('finished fetching');
+     console.log('finished fetching')
  }
-
-const bringAllData = ()=>{
-  return new Promise(resolve => {
-    axios.get('/exp/allExpenses/')
-    .then(res =>{
-      console.log('32: ',res)
-      setChartData(res.data);
-    })
-    
-    resolve(chartData);
-  });
-}
-
 
  const getSumByMonth = async ()=>{
    for(let month=1; month<=12; month++){
@@ -53,17 +41,16 @@ const bringAllData = ()=>{
     });
      monthesSummArray.push(aMonthSum);   
    }
-   return monthesSummArray;
+   console.log('monthesSummArray: ',monthesSummArray);
  }//getSumByMonth 
 
-const getSumByMonth2 = async ()=>{
-  console.log('hello getSumByMonth2');  
-  // await fetchData().then( ()=>{
-  await bringAllData().then( ()=>{
-    console.log('59: ', chartData)
+const getSumByMonth2 = (callback)=>{
+  console.log('hello getSumByMonth2')
+  return new Promise((res, rej)=>{
+    // console.log('getSumByMonth2', getSumByMonth2);
     for(let month=1; month<=12; month++){
       let aMonthSum=0;
-       chartData.forEach((exp)=>{
+      chartData.forEach((exp)=>{
        let adate = new Date(exp.date);
        if(Number(adate.getMonth()+1) ===month ){
         if(exp.expenseType === 'income') {
@@ -73,11 +60,10 @@ const getSumByMonth2 = async ()=>{
         }
        }
       });
-      monthesSummArray.push(aMonthSum);       
-     }
-    })
-     console.log('63: ', monthesSummArray)
-     return monthesSummArray;
+       monthesSummArray.push(aMonthSum);       
+     }     
+     res();
+  })  
 }
 
  const colorArray = async ()=>{
@@ -89,29 +75,28 @@ const getSumByMonth2 = async ()=>{
 }//colorArray
 
 const chart= async()=>{
-  await getSumByMonth2().then(()=>{
-    setstate({
-      labels: ['January', 'February', 'March','April', 'May','June','July','August','September','October','November','December'],
-      datasets: [
-        {
-          label: 'balance by month: ',
-          backgroundColor: bgColorArray,
-          borderColor: 'rgba(0,0,0,1)',
-          borderWidth: 1,
-          data: monthesSummArray
-          }
-        ]
-      });
-  })
-
+  console.log('monthesSummArray', monthesSummArray)
+  setstate({
+  labels: ['January', 'February', 'March','April', 'May','June','July','August','September','October','November','December'],
+  datasets: [
+    {
+      label: 'balance by month: ',
+      backgroundColor: bgColorArray,
+      borderColor: 'rgba(0,0,0,1)',
+      borderWidth: 1,
+      data: monthesSummArray
+      }
+    ]
+  });
   console.log('chart')
 }
 
  useEffect(()=>{   
-  //  fetchData();
-  //  getSumByMonth2();
-   chart();
+   fetchData()
+   .then(getSumByMonth2())
+   .then(chart()); 
    colorArray();  
+  //  chart();
  },[]); 
 //  },[expense]); 
 

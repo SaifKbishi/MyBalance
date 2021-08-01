@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const Expense = mongoose.model('expItem',{
+const Expense = mongoose.model(
+  'expItem',
+  {
   date:{
     type: Date,
     required:[true, 'the date of the expense']
@@ -32,9 +34,9 @@ const Expense = mongoose.model('expItem',{
   },
   repeats:{
     type:Number,
-    // required:[false, 'only if you have divided the payment']
     }   
-});
+}
+);
 
 module.exports = Expense;
 

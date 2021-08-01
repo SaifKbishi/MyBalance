@@ -6,10 +6,10 @@ const RadioButton =({divCN, inputType, inputID, name, value, labelID, htmlFor, l
  return(
   <div className={divCN}> 
      <input type={inputType} 
-     id={inputID}
-     name={name}
-     value={value} 
-     checked={checked}/> 
+      id={inputID}
+      name={name}
+      value={value} 
+      checked={checked}/> 
      <label id={labelID} htmlFor ={htmlFor}>{labelText}</label>
    </div>
  );

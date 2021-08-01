@@ -20,7 +20,6 @@ const addExpense = async (req, res)=>{
   res.status(400).send(error);
  }
 };
-
 const updateExpense = async (req, res)=>{
  try{
   const exp1 = await Expense.findByIdAndUpdate(req.params.id, req.body);
@@ -33,7 +32,6 @@ const updateExpense = async (req, res)=>{
   res.status(400).send(error);
  }
 };
-
 const deleteExpense = async (req, res)=>{
  try{
   const expToDelete = await Expense.findByIdAndDelete(req.params.id);
@@ -47,7 +45,6 @@ const deleteExpense = async (req, res)=>{
   res.status(400).send(error);
  }
 };
-
 const getExpenseByID = async (req, res)=>{
  try{
   const expItem = await Expense.findById(req.params.id);

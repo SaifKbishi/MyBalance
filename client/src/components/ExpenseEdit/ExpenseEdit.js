@@ -5,24 +5,26 @@ import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
 
 const ExpenseEdit=(props)=>{
- const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
- const [expense, setExpense] = useState(initialState);
+// const ExpenseEdit=(history, match)=>{
+const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
+const [expense, setExpense] = useState(initialState);
+const source = axios.CancelToken.source();
 
- useEffect( ()=>{
-  const source = axios.CancelToken.source();
-   const getExpenseItem = async ()=>{
+  const getExpenseItem = async ()=>{
     try{
-     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
-     setExpense(response.data);
+      const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
+      // const response = await axios.get(`/exp/getExpenseByID/${match.params._id}`, {cancelToken: source.token});//get expense by ID
+      setExpense(response.data);
     }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
-  }
+  }//getExpenseItem
 
-  getExpenseItem()
-  return () => {
-    source.cancel()
-}
-  
- },[props.match.params._id]);//useEffect
+  useEffect( ()=>{    
+    getExpenseItem();
+    return () => {
+      source.cancel();
+    }
+  },[props.match.params._id]);//useEffect
+  // },[match.params._id]);//useEffect
 
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});
@@ -38,7 +40,6 @@ const ExpenseEdit=(props)=>{
      setExpense(initialState);
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
-   console.log('props.history', props.history);
    props.history.goBack();
    saveExpense();
  }

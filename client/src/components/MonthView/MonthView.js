@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import * as ReactBootStrap from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import './MonthView.css';
 
@@ -13,26 +13,26 @@ const MonthView =(props)=>{
 
  const settheMonth=()=>{
   if(props.match.params.month){
+    console.log('props.match.params.month: ', props.match.params.month)
     setMonth(props.match.params.month)
   }else{
     setMonth(date.getMonth()+1);
   }
  }
- 
-
- useEffect(()=>{
-  const fetchMonthData = async(month) =>{   
-   try{
-    const data = await axios.get(`/exp/viewbymonth/${month}`);
-    const dataArray = data.data;
-    dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
-    setExpense(dataArray);
-   }catch(error){
-    console.log('MonthView, could not fetch data', error);
-   }
+ const fetchMonthData = async(month=date.getMonth()+1) =>{
+  try{
+   const data = await axios.get(`/exp/viewbymonth/${month}`);
+   const dataArray = data.data;
+   dataArray.sort((a,b)=>(a.expenseType < b.expenseType)?1:-1);
+   setExpense(dataArray);
+  }catch(error){
+   console.log('MonthView, could not fetch data', error);
   }
-  fetchMonthData(month);
-  settheMonth();
+ }
+
+ useEffect(()=>{ 
+  // settheMonth();
+  fetchMonthData(month);  
  },[month]);
 
  const handleChange = (e)=>{
@@ -78,7 +78,7 @@ const MonthView =(props)=>{
    <select onChange={handleChange} value={month}> 
     <option value="-1">select month</option>
     <option value="1">January</option>
-    <option value="2">February</option>
+    <option value="2" name="February">February</option>
     <option value="3">March</option>
     <option value="4">April</option>
     <option value="5">May</option>
@@ -91,7 +91,7 @@ const MonthView =(props)=>{
     <option value="12">December</option>
    </select>
    <hr/>
-     <ReactBootStrap.Table bordered hover size="sm" options={options}>
+     <Table bordered hover size="sm" options={options}>
       <thead>
         <tr>
          <th>X</th>
@@ -111,7 +111,7 @@ const MonthView =(props)=>{
          <th></th>
         </tr>
       </tbody>
-     </ReactBootStrap.Table>     
+     </Table>     
   </div>
  );
 }//ExpensesTable
