@@ -1,15 +1,12 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
 import axios from 'axios' ;
 import './ExpensesTable.css';
 import {Table} from 'react-bootstrap';
 import { useHistory  } from 'react-router-dom';
-import {ExpenseContext} from '../ExpenseContext/ExpenceContext';
 
 const ExpensesTable =()=>{
-  const {name, setName, amount, setAmount, description, setDescription, repeats, setRepeats,
-    date, setDate, expenseType, setExpenseType, expense, setExpense, income, setIncome} = useContext(ExpenseContext);
-//  const [expense, setExpense] = useState([]);
+ const [expense, setExpense] = useState([]);
  const history = useHistory();
 
  const abortController = new AbortController();

@@ -6,11 +6,8 @@ import RadioButton from '../utils/RadioButton';
 import {ExpenseContext} from '../ExpenseContext/ExpenceContext';
 
 const ExpenseForm=()=>{
-//  const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
-//  const [expense, setExpense] = useState(initialState);
-//  const [expense, setExpense] = useState(initialState);
-const {name, setName, amount, setAmount, description, setDescription, repeats, setRepeats,
-   date, setDate, expenseType, setExpenseType, expense, setExpense, income, setIncome} = useContext(ExpenseContext);
+ const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
+ const [expense, setExpense] = useState(initialState);
 
  const handleChange = (e)=>{
   setExpense({...expense,[e.target.name]:e.target.value});

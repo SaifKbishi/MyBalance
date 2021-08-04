@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect} from "react";
 import axios from 'axios'; 
 import './ExpenseEdit.css';
 import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
-import {ExpenseContext} from '../ExpenseContext/ExpenceContext';
 
 const ExpenseEdit=(props)=>{
-  const {name, setName, amount, setAmount, description, setDescription, repeats, setRepeats,
-    date, setDate, expenseType, setExpenseType, expense, setExpense, income, setIncome} = useContext(ExpenseContext);
+  
 // const ExpenseEdit=(history, match)=>{
-// const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
-// const [expense, setExpense] = useState(initialState);
+const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
+const [expense, setExpense] = useState(initialState);
 const source = axios.CancelToken.source();
 
   const getExpenseItem = async ()=>{

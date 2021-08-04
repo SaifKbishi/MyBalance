@@ -6,15 +6,15 @@ import AuthService from "../../services/auth.service";
 import {ExpenseContext} from '../ExpenseContext/ExpenceContext';
 
 function Home(){
-  // const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
-  const [name, setName] = useState(''); 
-  const [amount, setAmount] = useState(''); 
-  const [description, setDescription] = useState(''); 
-  const [repeats, setRepeats] = useState(''); 
-  const [date, setDate] = useState(''); 
-  const [expenseType, setExpenseType] = useState('expense'); 
+  const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
+  // const [name, setName] = useState(''); 
+  // const [amount, setAmount] = useState(''); 
+  // const [description, setDescription] = useState(''); 
+  // const [repeats, setRepeats] = useState(''); 
+  // const [date, setDate] = useState(''); 
+  // const [expenseType, setExpenseType] = useState('expense'); 
   const [expense, setExpense] = useState('expense'); 
-  const [income, setIncome] = useState('income'); 
+  // const [income, setIncome] = useState('income'); 
 
  const [currentUser, setCurrentUser] = useState(undefined); 
  useEffect(()=>{
@@ -34,6 +34,7 @@ function Home(){
     {currentUser && (<ExpenseForm />)}
     <hr/>
     <ExpensesTable />
+    {/* <ExpensesTable2 /> */}
     </ExpenseContext.Provider>
   </div>
  );

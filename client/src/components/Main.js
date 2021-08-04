@@ -17,19 +17,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Main() {
  return(
-   <Switch>
-    <Route exact path={['/', '/Home']} component={Home}/>
-    <Route exact path={'/viewbymonth/'} component={MonthView}/>
-    <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
-    <Route exact path={'/allExpenses/'} component={ExpensesTable}/>
-    <Route exact path={'/charts/'} component={Charts}/>
-    <Route exact path={'/addExpense/'} component={ExpenseForm}/>
-    <Route exact path={'/updateExpense/:_id/'} component={ExpenseEdit}/>    
-    <Route exact path={'/login'} component={Login}/>
-    <Route exact path={'/register'} component={Register}/>
-    <Route exact path={'/profile'} component={Profile}/>
-    <Route exact path={'/user'} component={BoardUser}/>
-    <Route exact path={'/admin'} component={BoardAdmin}/>
+   <Switch>    
+      <Route exact path={['/', '/Home']} component={Home}/>
+      <Route exact path={'/viewbymonth/'} component={MonthView}/>
+      <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
+      <Route exact path={'/allExpenses/'} component={ExpensesTable}/>
+      <Route exact path={'/charts/'} component={Charts}/>
+      <Route exact path={'/addExpense/'} component={ExpenseForm}/>
+      <Route exact path={'/updateExpense/:_id/'} component={ExpenseEdit}/>    
+      <Route exact path={'/login'} component={Login}/>
+      <Route exact path={'/register'} component={Register}/>
+      <Route exact path={'/profile'} component={Profile}/>
+      <Route exact path={'/user'} component={BoardUser}/>
+      <Route exact path={'/admin'} component={BoardAdmin}/>
    </Switch>
  );  
 }
