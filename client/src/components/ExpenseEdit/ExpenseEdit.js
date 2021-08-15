@@ -40,7 +40,7 @@ const source = axios.CancelToken.source();
     try{
      await axios.patch(`/exp/updateExpense/${expense._id}`, expense);
      console.log('edit is done');
-     setExpense(initialState);
+    //  setExpense(initialState);
     }catch(error){console.log('ExpenseEdit, could not save the expense', error)}
    }//saveExpense
    props.history.goBack();
