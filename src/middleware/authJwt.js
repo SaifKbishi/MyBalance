@@ -49,37 +49,8 @@ isAdmin = (req, res, next)=>{
  })
 };//isAdmin
 
-// isModerator = (req, res, next)=>{
-//  User.findById(req.userId).exec((error, user)=>{
-//   if(error){
-//    res.status(500).send({message: error});
-//    return;
-//   }
-//   Role.find(
-//    {
-//     _id:{$in: user.roles}
-//    },
-//    (error, roles)=>{
-//     if(error){
-//      res.status(500).send({message: error});
-//      return;
-//     }
-//     for(let i=0; i<roles.length; i++){
-//      if(roles[i].name === 'moderator'){
-//       next();
-//       return;
-//      }
-//     }
-//     res.status(403).send({message: 'Require Moderator Role!'});
-//     return;
-//    }
-//   );
-//  });
-// }//isModerator
-
 const authJwt = {
  verifyToken,
  isAdmin,
- // isModerator
 };
 module.exports = authJwt;
