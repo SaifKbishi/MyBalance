@@ -14,7 +14,9 @@ router
 .get('/charts/', (req, res)=>{expenseController.allExpenses(req, res)})
 .post('/addExpense/',async (req, res)=>{expenseController.addExpense(req, res);})
 .patch('/updateExpense/:id', (req, res)=>{expenseController.updateExpense(req, res);})
-.delete('/deleteExpense/:id', (req, res)=>{expenseController.deleteExpense(req, res);});
+.delete('/deleteExpense/:id', (req, res)=>{expenseController.deleteExpense(req, res);})
+.post('/auth/signin', authController.signin)
+.post('/auth/signup', [verifySignUp.checkDuplicateUsernameOrEmail,verifySignUp.checkRolesExisted], authController.signup );
 
 module.exports = router;
 
