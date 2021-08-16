@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ExpenseEdit.css';
 import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
+import { Button } from "react-bootstrap";
 
 const ExpenseEdit=(props)=>{
 // const ExpenseEdit=(history, match)=>{
@@ -43,6 +44,15 @@ const source = axios.CancelToken.source();
    props.history.goBack();
    saveExpense();
  }
+ const handleDelete= async (e)=>{
+  e.preventDefault();
+  try{
+    await axios.delete(`/exp/deleteExpense/${expense._id}`);
+    console.log('delete is done');
+    setExpense(initialState);
+  }catch(error){console.log('delete, could not save the expense', error)}
+  props.history.goBack();
+ }
 
  return(
   <div>
@@ -71,10 +81,14 @@ const source = axios.CancelToken.source();
       <option value="13">CC - תוספות אשראי</option>
    </select>
    </label>
-    <div className="btn-group">
-     <input type="submit" value="Submit" className="btn btn-primary" />
-    </div>
-   </form>  
+   {/* <div className="btn-group"> */}
+    <div className="editFormButtons">
+     {/* <input type="submit" value="Submit" className="btn btn-primary" /> */}
+     <Button type="submit" className="btn btn-primary" >Save</Button>{' '}     
+     <Button type="submit" variant="warning" value="Delete" className="btn btn-primary" onClick={(e)=>handleDelete(e)}>Delete</Button>     
+    </div> 
+   </form>
+   
   </div>
  );
 }

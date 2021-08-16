@@ -33,12 +33,18 @@ const updateExpense = async (req, res)=>{
  }
 };
 const deleteExpense = async (req, res)=>{
+  console.log(`EC delete ${req.params.id}`);
  try{
+  const expItem = await Expense.findById(req.params.id);  
+  console.log(`EC2 delete ${expItem.name}`);
+  console.log(`EC2 delete ${expItem.amount}`);
+  console.log(`EC2 delete ${expItem.expenseType}`);
+
   const expToDelete = await Expense.findByIdAndDelete(req.params.id);
   if(!expToDelete){
    return res.status(404).send();
   }
-  console.log(expense.name, 'was deleted')
+  console.log(`${expItem.name}, was deleted`)
   res.status(200).send(expToDelete);
  }catch(error){
   console.log(`could not delete item because of error: ${error}`);

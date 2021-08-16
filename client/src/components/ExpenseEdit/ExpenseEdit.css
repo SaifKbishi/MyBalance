@@ -69,3 +69,10 @@ input[type=radio]:focus + label {
   color:#FFF;
 }
 /*end of radio buttons as buttons */
+
+.editFormButtons{
+  display: flex;
+}
+.editFormButtons button{
+  margin: 3% 2%
+}

@@ -85,16 +85,16 @@ router.patch('/addExpense/:id',async (req, res)=>{
 
 
 //delete an expense by id
-// router.delete('/deleteexp/:id',async (req, res)=>{
-//  console.log('req.params.id:',req.params.id)
-//  try{
-//   const expToDelete = await ExpenseMonth.XXXX({});
-//   res.status(XXXX).send(XXXX);
-//  }catch(error){
-//   console.log('could not XXXX');
-//   res.status(400).send(error);
-//  }
-// });
+router.delete('/deleteExpense/:id',async (req, res)=>{
+ console.log('req.params.id:',req.params.id)
+ try{
+  const expToDelete = await ExpenseMonth.XXXX({});
+  res.status(XXXX).send(XXXX);
+ }catch(error){
+  console.log('could not XXXX');
+  res.status(400).send(error);
+ }
+});
 
 
 //delete a month
