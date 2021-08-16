@@ -54,7 +54,7 @@ const Register = () => {
   };//handleRegister
 
   return (
-    document.title = 'My Balance | Register',
+    // document.title = 'My Balance | Register',
     <div className="reg col-md-12">
       Register
       <div className="card card-container">

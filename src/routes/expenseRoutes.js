@@ -1,8 +1,11 @@
 const {authJwt} = require('../middleware');
+const {verifySignUp} = require('../middleware');
 
 const express = require('express');
 const router = express.Router();
 const expenseController = require('../controllers/ExpenseController');
+const authController = require('../controllers/authController');
+
 
 router
 .get('/allExpenses/', (req, res)=>{expenseController.allExpenses(req, res)})
