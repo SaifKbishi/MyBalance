@@ -24,7 +24,7 @@ const ExpenseForm=()=>{
  }
 
  return(
-  <div>
+  <div className="expFormContainer">
    <form className="expensesForm" onSubmit={handleSubmit}>
     <span className="radioBtns" onChange={handleChange}>
       <RadioButton divCN="input-radio" inputType="radio" inputID="expensepay" name="expenseType" value={expense.expense}  labelID="expenseLabel" htmlFor="expensepay" labelText="Add Expense" />
