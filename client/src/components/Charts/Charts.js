@@ -66,21 +66,67 @@ const bringAllData = ()=>{
    return monthesSummArray;
  }//getSumByMonth 
 
+// const getSumByMonth2 = async ()=>{
+//   console.log('getSumByMonth2 starts');
+//   console.log('59 chartData: ', chartData)
+//   for(let month=1; month<=12; month++){
+//     let aMonthSum=0;
+//       chartData.forEach((exp)=>{
+//       let adate = new Date(exp.date);
+//       if(Number(adate.getMonth()+1) ===month ){
+//         if(exp.expenseType === 'income') {
+//           aMonthSum+=exp.amount;
+//         }else{
+//           aMonthSum-=exp.amount;
+//         }
+//       }
+//     });
+//     monthesSummArray.push(aMonthSum);       
+//     }
+//     console.log('63 monthesSummArray: ', monthesSummArray)
+//     return monthesSummArray;
+// }
+const agg = [
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {'$month': '$date'}}
+  }, {
+    '$match': {
+      'month': 8
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': ['$expenseType', 'expense']
+                }, {'$subtract': [0, '$amount']}, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}];
+
 const getSumByMonth2 = async ()=>{
   console.log('getSumByMonth2 starts');
   console.log('59 chartData: ', chartData)
   for(let month=1; month<=12; month++){
     let aMonthSum=0;
-      chartData.forEach((exp)=>{
-      let adate = new Date(exp.date);
-      if(Number(adate.getMonth()+1) ===month ){
-        if(exp.expenseType === 'income') {
-          aMonthSum+=exp.amount;
-        }else{
-          aMonthSum-=exp.amount;
-        }
-      }
-    });
+  
     monthesSummArray.push(aMonthSum);       
     }
     console.log('63 monthesSummArray: ', monthesSummArray)
@@ -147,3 +193,73 @@ const chart= async()=>{
 
 }
 export default Charts
+
+
+
+
+
+/**
+const agg = [
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {
+        '$month': '$date'
+      }
+    }
+  }, {
+    '$match': {
+      'month': 8
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': [
+                    '$expenseType', 'expense'
+                  ]
+                }, {
+                  '$subtract': [
+                    0, '$amount'
+                  ]
+                }, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {
+    '$group': {
+      '_id': null, 
+      'TOTAL': {
+        '$sum': '$total'
+      }
+    }
+  }
+];
+
+MongoClient.connect(
+  '',
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  function(connectErr, client) {
+    assert.equal(null, connectErr);
+    const coll = client.db('').collection('');
+    coll.aggregate(agg, (cmdErr, result) => {
+      assert.equal(null, cmdErr);
+    });
+    client.close();
+  });
+ */

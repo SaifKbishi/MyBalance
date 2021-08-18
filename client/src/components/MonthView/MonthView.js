@@ -70,6 +70,7 @@ const MonthView =(props)=>{
  const getSum = ()=>{
   let monthSum = 0;
   expense.forEach((exp)=>{if(exp.expenseType === 'income') {monthSum+=exp.amount}else{monthSum-=exp.amount}} );
+  console.log('monthSum: ',monthSum)
   return monthSum;
  }//getSum
 
@@ -106,7 +107,8 @@ const MonthView =(props)=>{
        <tr>
          <th></th>
          <th></th>
-         <th>{(getSum()>0) ? -getSum() : getSum()  } $</th>
+         <th>{(getSum()>0) ? `-${getSum()}` : `${getSum()}`  } $</th>
+         {/* <th>{if(getSum()<0){`-${getSum()}`}}</th> */}
          <th></th>
          <th></th>
         </tr>

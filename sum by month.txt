@@ -1,0 +1,107 @@
+[
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {
+        '$month': '$date'
+      }
+    }
+  }, {
+    '$match': {
+      'month': 8
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': [
+                    '$expenseType', 'expense'
+                  ]
+                }, {
+                  '$subtract': [
+                    0, '$amount'
+                  ]
+                }, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {
+    '$group': {
+      '_id': null, 
+      'documents': {
+        '$push': '$$ROOT'
+      }, 
+      'TOTAL': {
+        '$sum': '$total'
+      }
+    }
+  }
+]
+
+***************************************************************************
+[
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {
+        '$month': '$date'
+      }
+    }
+  }, {
+    '$match': {
+      'month': 8
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': [
+                    '$expenseType', 'expense'
+                  ]
+                }, {
+                  '$subtract': [
+                    0, '$amount'
+                  ]
+                }, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {
+    '$group': {
+      '_id': null, 
+      'TOTAL': {
+        '$sum': '$total'
+      }
+    }
+  }
+]
