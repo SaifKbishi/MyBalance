@@ -3,7 +3,6 @@ const router = express.Router();
 const ExpenseMonth = require('../models/expenseModel');
 // const Expense = require('../models/expenses');
 
-
 //retrive a month expenses  //READ
 router.get('/allmonthes/',async (req, res)=>{
  try{
@@ -95,22 +94,5 @@ router.delete('/deleteExpense/:id',async (req, res)=>{
   res.status(400).send(error);
  }
 });
-
-
-//delete a month
-
-
-/*
-router.XXXX('/XXXX/',async (req, res)=>{
- try{
-  const XXXX = await ExpenseMonth.XXXX({});
-  res.status(XXXX).send(XXXX);
- }catch(error){
-  console.log('could not XXXX');
-  res.status(400).send(error);
- }
-});
-
-*/
 
 module.exports = router;

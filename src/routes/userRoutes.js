@@ -12,6 +12,7 @@ module.exports = function(app){
  // app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);
  // app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
 
+ console.log('userRoutes') 
  app.get('/exp/all', userController.allAccess);
  app.get('/exp/user', [authJwt.verifyToken], userController.userBoard);
  app.get('/exp/admin', [authJwt.verifyToken, authJwt.isAdmin], userController.adminBoard);
