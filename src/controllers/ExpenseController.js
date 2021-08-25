@@ -92,12 +92,176 @@ const viewbymonth = async (req, res)=>{
  }
 };
 
+
+
+const agg = [
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {'$month': '$date'}}
+  }, {
+    '$match': {
+      'month': 5
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': ['$expenseType', 'expense']
+                }, {'$subtract': [0, '$amount']}, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}];
+
+
+const expensesByMonth = async (req, res, thisMonth)=>{
+  const monthes=[1,2,3,4,5,6,7,8,9,10,11,12];
+  const gggg=[];
+  const kkk=[];
+  const query = [{
+                  '$project': {
+                    'name': 1, 
+                    'date': 1, 
+                    'amount': 1, 
+                    'expenseType': 1, 
+                    'month': {'$month': '$date'}}
+                }, {
+                  '$match': {
+                    'month': mon
+                  }
+                }, {
+                  '$group': {
+                    '_id': '$expenseType', 
+                    'total': {
+                      '$sum': {
+                        '$cond': [
+                          {
+                            '$eq': [
+                              '$expenseType', 'income'
+                            ]
+                          }, '$amount', {
+                            '$cond': [
+                              {
+                                '$eq': ['$expenseType', 'expense']
+                              }, {'$subtract': [0, '$amount']}, 0
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}];
+
+  try{
+    // const expensesByMonthData = await Expense.aggregate(agg);
+    const expensesByMonthData = await Expense.aggregate(
+        [{
+          '$project': {
+            'name': 1, 
+            'date': 1, 
+            'amount': 1, 
+            'expenseType': 1, 
+            'month': {'$month': '$date'}}
+        }, {
+          '$match': {
+            'month': 6
+          }
+        }, {
+          '$group': {
+            '_id': '$expenseType', 
+            'total': {
+              '$sum': {
+                '$cond': [
+                  {
+                    '$eq': [
+                      '$expenseType', 'income'
+                    ]
+                  }, '$amount', {
+                    '$cond': [
+                      {
+                        '$eq': ['$expenseType', 'expense']
+                      }, {'$subtract': [0, '$amount']}, 0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}]
+      );
+    const expensesByMonthData2 = await Expense.aggregate(
+        [{
+          '$project': {
+            'name': 1, 
+            'date': 1, 
+            'amount': 1, 
+            'expenseType': 1, 
+            'month': {'$month': '$date'}}
+        }, {
+          '$match': {
+            'month': 7
+          }
+        }, {
+          '$group': {
+            '_id': '$expenseType', 
+            'total': {
+              '$sum': {
+                '$cond': [
+                  {
+                    '$eq': [
+                      '$expenseType', 'income'
+                    ]
+                  }, '$amount', {
+                    '$cond': [
+                      {
+                        '$eq': ['$expenseType', 'expense']
+                      }, {'$subtract': [0, '$amount']}, 0
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}]
+      );
+    for(let mon =1; mon<=12; mon++){
+          Expense.aggregate(query)
+      }
+      gggg.push(expensesByMonthData);
+      gggg.push(expensesByMonthData2);
+      console.log('gggg: ', gggg)
+      console.log('kkk: ', kkk)
+      res.status(200).send(expensesByMonthData);
+     console.log('135: ', expensesByMonthData)
+  }catch(error){
+   console.log('could not fetch all Month expenses');
+   res.status(400).send(error);
+  }
+ };// expensesByMonth  TEMP
+
 module.exports = {
  allExpenses,
  addExpense,
  viewbymonth,
  updateExpense,
  deleteExpense,
- getExpenseByID
+ getExpenseByID,
+ expensesByMonth,
 }
 

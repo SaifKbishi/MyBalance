@@ -8,6 +8,7 @@ const authController = require('../controllers/authController');
 
 
 router
+.get('/expensesByMonth/', (req, res)=>{expenseController.expensesByMonth(req, res)})
 .get('/allExpenses/', (req, res)=>{expenseController.allExpenses(req, res)})
 .get('/viewbymonth/:month', (req, res)=>{expenseController.viewbymonth(req, res);})
 .get('/getExpenseByID/:id', (req, res)=>{expenseController.getExpenseByID(req,res);})

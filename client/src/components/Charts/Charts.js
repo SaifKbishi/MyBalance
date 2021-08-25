@@ -13,6 +13,7 @@ const Charts = ()=>{
  const [state, setstate] = useState({});
  const [expense, setExpense] = useState([]); 
  const [chartData, setChartData] = useState([]);
+ const [monthChartData, setMonthChartData] = useState([]);
 
  const fetchData = async () =>{
   console.log('hello fetchData');
@@ -27,25 +28,22 @@ const Charts = ()=>{
 
 const bringAllData = ()=>{
   console.log('bringAllData starts')
-  return new Promise(resolve => {
+  new Promise(resolve => {
     axios.get('/exp/allExpenses/')
     .then(res =>{
-      console.log('32 got results: ',res)
+      console.log('32 got results: ',res);
       setChartData(res.data);
+      resolve(chartData);
     })
-    .then(
-      getSumByMonth2()
-    )
-    .then(
-        chart()
-    )
-    .then(
-      colorArray()
-    )    
-    
-    resolve(chartData);
-  });
-}
+  })
+  .then(()=>{
+    return new Promise((resolve, reject)=>{
+      console.log('40 chartData: ',chartData)  
+      resolve();
+    })        
+  })
+  .then(()=>{return new Promise((resolve, reject) => {getSumByMonth2(); resolve();})})
+}//bringAllData
 
 
  const getSumByMonth = async ()=>{
@@ -86,51 +84,19 @@ const bringAllData = ()=>{
 //     console.log('63 monthesSummArray: ', monthesSummArray)
 //     return monthesSummArray;
 // }
-const agg = [
-  {
-    '$project': {
-      'name': 1, 
-      'date': 1, 
-      'amount': 1, 
-      'expenseType': 1, 
-      'month': {'$month': '$date'}}
-  }, {
-    '$match': {
-      'month': 8
-    }
-  }, {
-    '$group': {
-      '_id': '$expenseType', 
-      'total': {
-        '$sum': {
-          '$cond': [
-            {
-              '$eq': [
-                '$expenseType', 'income'
-              ]
-            }, '$amount', {
-              '$cond': [
-                {
-                  '$eq': ['$expenseType', 'expense']
-                }, {'$subtract': [0, '$amount']}, 0
-              ]
-            }
-          ]
-        }
-      }
-    }
-  }, {'$group': {'_id': null, 'TOTAL': {'$sum': '$total'}}}];
 
 const getSumByMonth2 = async ()=>{
-  console.log('getSumByMonth2 starts');
-  console.log('59 chartData: ', chartData)
-  for(let month=1; month<=12; month++){
-    let aMonthSum=0;
+
+  // console.log('getSumByMonth2 starts');
+  // console.log('59 chartData: ', chartData)
+  // for(let month=1; month<=12; month++){
+  //   let aMonthSum=0;
   
-    monthesSummArray.push(aMonthSum);       
-    }
-    console.log('63 monthesSummArray: ', monthesSummArray)
-    return monthesSummArray;
+  //   monthesSummArray.push(aMonthSum);       
+  //   }
+  //   console.log('63 monthesSummArray: ', monthesSummArray)
+  //   return monthesSummArray;
+
 }
 
  const colorArray = async ()=>{
@@ -161,9 +127,79 @@ const chart= async()=>{
   console.log('chart')
 }
 
+const query = [
+  {
+    '$project': {
+      'name': 1, 
+      'date': 1, 
+      'amount': 1, 
+      'expenseType': 1, 
+      'month': {
+        '$month': '$date'
+      }
+    }
+  }, {
+    '$match': {
+      'month': 8
+    }
+  }, {
+    '$group': {
+      '_id': '$expenseType', 
+      'total': {
+        '$sum': {
+          '$cond': [
+            {
+              '$eq': [
+                '$expenseType', 'income'
+              ]
+            }, '$amount', {
+              '$cond': [
+                {
+                  '$eq': [
+                    '$expenseType', 'expense'
+                  ]
+                }, {
+                  '$subtract': [
+                    0, '$amount'
+                  ]
+                }, 0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }, {
+    '$group': {
+      '_id': null, 
+      'TOTAL': {
+        '$sum': '$total'
+      }
+    }
+  }
+];
+
+const getSumByMonthFromDB = async ()=>{
+  console.log('getSumByMonthFromDB: ');
+  console.log('hello fetchData');
+  try{
+    console.log('finished fetching 0.5');
+    const data = await axios.get('/exp/expensesByMonth/');      
+    console.log('189: ',typeof(data.data), data.data[0].TOTAL)
+    setMonthChartData(data.data);
+    
+   }catch(error){
+    console.log('could not fetch data', error);
+   }
+   console.log('finished fetching2');
+   console.log('monthChartData', monthChartData);
+
+}
+
  useEffect(()=>{
    console.log('useEffect starts')
-  bringAllData();
+   getSumByMonthFromDB();
+  // bringAllData();
   //  fetchData();
   //  getSumByMonth2();
   //  chart();
@@ -199,7 +235,7 @@ export default Charts
 
 
 /**
-const agg = [
+const query = [
   {
     '$project': {
       'name': 1, 
