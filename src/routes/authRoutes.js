@@ -7,10 +7,10 @@ module.exports = function(app){
   next();
  })
  
-//  app.post('/exp/auth/signup',
-//   [
-//    verifySignUp.checkDuplicateUsernameOrEmail,
-//    verifySignUp.checkRolesExisted
-//   ],  authController.signup );
-//  app.post('/exp/auth/signin', authController.signin);
+ app.post('/exp/auth/signup',
+  [
+   verifySignUp.checkDuplicateUsernameOrEmail,
+   verifySignUp.checkRolesExisted
+  ],  authController.signup );
+ app.post('/exp/auth/signin', authController.signin);
 };
