@@ -22,12 +22,11 @@ const Charts = ()=>{
       const data = await axios.get('/exp/allExpenses/');      
       // console.log('22',data.data)
       setChartData(data.data);
-      console.log('25',data.data)
      }catch(error){
       console.log('could not fetch data', error);
-     }     
-     console.log('finished fetching');
+     }
      console.log('chartData', chartData)
+     console.log('finished fetching');
  }
 
 const bringAllData = ()=>{
@@ -70,6 +69,27 @@ const bringAllData = ()=>{
    return monthesSummArray;
  }//getSumByMonth 
 
+// const getSumByMonth2 = async ()=>{
+//   console.log('getSumByMonth2 starts');
+//   console.log('59 chartData: ', chartData)
+//   for(let month=1; month<=12; month++){
+//     let aMonthSum=0;
+//       chartData.forEach((exp)=>{
+//       let adate = new Date(exp.date);
+//       if(Number(adate.getMonth()+1) ===month ){
+//         if(exp.expenseType === 'income') {
+//           aMonthSum+=exp.amount;
+//         }else{
+//           aMonthSum-=exp.amount;
+//         }
+//       }
+//     });
+//     monthesSummArray.push(aMonthSum);       
+//     }
+//     console.log('63 monthesSummArray: ', monthesSummArray)
+//     return monthesSummArray;
+// }
+
 const getSumByMonth2 = async ()=>{
 
   // console.log('getSumByMonth2 starts');
@@ -93,9 +113,8 @@ const getSumByMonth2 = async ()=>{
 }//colorArray
 
 const chart= async()=>{
-  console.log('chart starts')  
-  console.log('chartData chart', chartData)
-  // await getSumByMonth().then(()=>{
+  console.log('chart starts')
+  await getSumByMonth().then(()=>{
     setstate({
       labels: ['January', 'February', 'March','April', 'May','June','July','August','September','October','November','December'],
       datasets: [
@@ -108,7 +127,7 @@ const chart= async()=>{
           }
         ]
       });
-  // })
+  })
 
   console.log('chart')
 }
@@ -181,7 +200,10 @@ const getSumByMonthFromDB = async ()=>{
 
  useEffect(()=>{
    console.log('useEffect starts in charts')
+  //  getSumByMonthFromDB();
+  // bringAllData();
    fetchData();
+  //  getSumByMonth2();
    chart();
    colorArray();  
  },[]); 

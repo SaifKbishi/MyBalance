@@ -92,8 +92,6 @@ const viewbymonth = async (req, res)=>{
  }
 };
 
-
-
 const agg = [
   {
     '$project': {
@@ -254,6 +252,7 @@ const expensesByMonth = async (req, res, thisMonth)=>{
    res.status(400).send(error);
   }
  };// expensesByMonth  TEMP
+
 
 module.exports = {
  allExpenses,

@@ -18,7 +18,8 @@ function Home(){
    <h5>Welcome</h5>
    {!currentUser && (<h6>This is the basic view, you need to SignUp/Login to enjoy the variety of MyBalance features</h6>)}
 
-   {currentUser && (<ExpenseForm />)}
+   {/* {currentUser && (<ExpenseForm />)} */}
+   { (<ExpenseForm />)}
    <hr/>
    <ExpensesTable />
    {/* <ExpensesTable2 /> */}
