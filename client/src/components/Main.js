@@ -5,7 +5,6 @@ import ExpenseEdit from './ExpenseEdit/ExpenseEdit';
 import ExpenseForm from './ExpenseForm/ExpenseForm';
 import ExpensesTable from './ExpensesTable/ExpensesTable';
 import Charts from './Charts/Charts';
-import ChartJS2 from './Charts/ChartJS2';
 // import ExpensesTable2 from './ExpensesTable/ExpensesTable2';
 
 import Home from './pages/Home';
@@ -23,8 +22,7 @@ function Main() {
     <Route exact path={'/viewbymonth/'} component={MonthView}/>
     <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
     <Route exact path={'/allExpenses/'} component={ExpensesTable}/>
-    <Route exact path={'/charts/'} component={ChartJS2}/>
-    <Route exact path={'/chartsOLD/'} component={Charts}/>
+    <Route exact path={'/charts/'} component={Charts}/>
     <Route exact path={'/addExpense/'} component={ExpenseForm}/>
     <Route exact path={'/updateExpense/:_id/'} component={ExpenseEdit}/>    
     <Route exact path={'/login'} component={Login}/>

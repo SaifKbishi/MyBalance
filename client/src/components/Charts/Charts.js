@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Bar} from 'react-chartjs-2';
+import {Bar, Line, PolarArea} from 'react-chartjs-2';
 import './Charts.css';
-const monthesSummArray=[];
 
 const bgColorArray=[];
 const chartColors = {
@@ -11,18 +10,8 @@ const chartColors = {
 };
 
 const Charts = ()=>{
- const [state, setstate] = useState({});
- const [expense, setExpense] = useState([]); 
  const [chartData, setChartData] = useState([]);
- const [monthChartData, setMonthChartData] = useState([]);
 
- const [monthesSummArray2, setMonthesSummArray2] = useState([]);
-
- const fetchData = async () =>{
-  console.log('hello fetchData');
-  //const data = await axios.get('/exp/allExpenses/');      
-
- }
 
 const chart= async()=>{
   const monthesSummArray_3=[];
