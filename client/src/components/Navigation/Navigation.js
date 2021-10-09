@@ -32,6 +32,7 @@ function Navigation(){
       {  (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
       {  (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
       {  (<Nav.Link href="/charts">Charts</Nav.Link>)}
+      {  (<Nav.Link href="/chartsOLD">Charts2</Nav.Link>)}
     </Nav>
     <Nav>
     <div className='navbar-nav mr-auto'>
