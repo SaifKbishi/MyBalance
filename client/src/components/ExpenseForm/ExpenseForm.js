@@ -12,7 +12,7 @@ const ExpenseForm=()=>{
   setExpense({...expense,[e.target.name]:e.target.value});
  }
  const handleSubmit=(e)=>{
-   e.preventDefault();
+  //  e.preventDefault();
    if(!expense.name || !expense.amount  ) return;   
    const saveExpense= async ()=>{
     try{
@@ -50,7 +50,7 @@ const ExpenseForm=()=>{
    </select>
    </label>
     <div className="btn-group" id="ExpenseFormSubmitBtn">
-     <input type="submit" value="Submit" className="btn btn-primary" />
+     <input type="submit" value="Add expense" className="btn btn-primary" />
     </div>
    </form>
   </div>

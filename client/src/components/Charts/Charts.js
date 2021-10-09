@@ -60,25 +60,30 @@ const chart= async()=>{
  },[]); 
 
  return (
-  <div className="charts">
-    <Bar
-      data={chartData}      
-      options={
-		  {
-        title:{
-          display: true,
-          text:'balance after expenses',
-          fontSize:20
-        },
-        plugins:{
-          legend:{
+   <div>
+    <div>
+      aside div
+    </div>
+    <div className="charts">
+      <Bar
+        data={chartData}      
+        options={
+        {
+          title:{
             display: true,
-            position:'right'
-          }
-        }        
-      }      
-      }
-    />
+            text:'balance after expenses',
+            fontSize:20
+          },
+          plugins:{
+            legend:{
+              display: true,
+              position:'right'
+            }
+          }        
+        }      
+        }
+      />
+    </div>
   </div>
 );
 
