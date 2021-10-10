@@ -5,18 +5,18 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 const expRoute = require('./src/routes/expenseRoutes');
-// const authRoute = require('./src/routes/authRoutes');
-// const userRoute = require('./src/routes/userRoutes');
+const authRoute = require('./src/routes/authRoutes');
+const userRoute = require('./src/routes/userRoutes');
 app.use('/exp', expRoute);
-// app.use('/exp', authRoute);
-// app.use('/exp', userRoute);
+app.use('/exp', authRoute);
+app.use('/exp', userRoute);
 
 
 //models require goes here
 
 //public dir for heroku. 
 const publicDirectory = path.join(__dirname, "client/build");
-app.use(express.static(publicDirectory));
+// app.use(express.static(publicDirectory));    //20211010 10:11
 
 // require('./src/db/mongoose');
 require('./src/config/mongoose');
@@ -27,7 +27,8 @@ const Role = db.role;
 initial();
 
 if (process.env.NODE_ENV === "production") {  
-  app.use(express.static(path.join(__dirname, './build')));
+  // app.use(express.static(path.join(__dirname, './build'))); 
+  app.use(express.static(publicDirectory)); 
 }
 
 function initial(){
@@ -50,11 +51,11 @@ function initial(){
   });
  }//initial
 
-app.get('/*',  (req, res) =>{
+app.get('/*',  (req, res) =>{  
   res.sendFile(path.join(__dirname, './build/index.html'));
 });
-require('./src/routes/authRoutes')(app);
-require('./src/routes/userRoutes')(app);
+// require('./src/routes/authRoutes')(app);
+// require('./src/routes/userRoutes')(app);
 
 // app.get("/",  (req, res) =>{ res.send('hello from the server')});
 

@@ -1,6 +1,8 @@
 //Authorization
 const {authJwt} = require('../middleware');
 const userController =require('../controllers/userController');
+const express = require("express");
+const app = express();
 
 module.exports = function(app){
  app.use((req,res, next)=>{

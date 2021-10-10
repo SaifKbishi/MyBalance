@@ -82,6 +82,7 @@ exports.signin = (req, res)=>{
    }
  
    let token = jwt.sign({id: user.id}, config.secret, {expiresIn:86400});
+   
    let authorties =[];
    for(let i=0; i<user.roles.length; i++){
      // console.log('87 auth.controller: ','\nZZZZ user: ',user
