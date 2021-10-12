@@ -1,7 +1,7 @@
 const Expense = require('../models/expenses_Model');
 
 exports.allAccess = async (req, res) => {
-   res.status(200).send("Public Content. controllers/userController");
+   res.status(200).send("Public Content from server user.controller. Home component1");
 
 //  try{
 //   const allExpData = await Expense.find({});

@@ -5,12 +5,11 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 const expRoute = require('./src/routes/expenseRoutes');
-const authRoute = require('./src/routes/authRoutes');
-const userRoute = require('./src/routes/userRoutes');
+// const authRoute = require('./src/routes/authRoutes');
+// const userRoute = require('./src/routes/userRoutes');
+// app.use('/exp', authRoute);
+// app.use('/exp', userRoute);
 app.use('/exp', expRoute);
-app.use('/exp', authRoute);
-app.use('/exp', userRoute);
-
 
 //models require goes here
 
@@ -51,11 +50,11 @@ function initial(){
   });
  }//initial
 
-app.get('/*',  (req, res) =>{  
+app.get('/',  (req, res) =>{  
   res.sendFile(path.join(__dirname, './build/index.html'));
 });
-// require('./src/routes/authRoutes')(app);
-// require('./src/routes/userRoutes')(app);
+require('./src/routes/authRoutes')(app);
+require('./src/routes/userRoutes')(app);
 
 // app.get("/",  (req, res) =>{ res.send('hello from the server')});
 
