@@ -13,7 +13,7 @@ const source = axios.CancelToken.source();
 
   const getExpenseItem = async ()=>{
     try{
-      const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
+      const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`);//get expense by ID
       // const response = await axios.get(`/exp/getExpenseByID/${match.params._id}`, {cancelToken: source.token});//get expense by ID
       setExpense(response.data);
     }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
@@ -21,9 +21,10 @@ const source = axios.CancelToken.source();
 
   useEffect( ()=>{    
     getExpenseItem();
-    return () => {
-      source.cancel();
-    }
+
+    // return () => {
+    //   source.cancel();
+    // }
   },[props.match.params._id]);//useEffect
   // },[match.params._id]);//useEffect
 
