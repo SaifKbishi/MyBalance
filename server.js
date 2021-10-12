@@ -10,7 +10,8 @@ app.use('/exp', expRoute);
 //models require goes here
 
 //public dir for heroku. 
-const publicDirectory = path.join(__dirname, "client/build");
+const publicDirectory = path.join(__dirname, "build");
+// const publicDirectory = path.join(__dirname, "client/build"); //20211012
 // app.use(express.static(publicDirectory));    //20211010 10:11
 
 // require('./src/db/mongoose');
@@ -47,7 +48,7 @@ function initial(){
  }//initial
 
 app.get('/',  (req, res) =>{  
-  res.sendFile(path.join(__dirname, './build/index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 require('./src/routes/authRoutes')(app);
 require('./src/routes/userRoutes')(app);
