@@ -11,14 +11,15 @@ const MonthView =(props)=>{
  const [month, setMonth] = useState();
  const history = useHistory();
 
- const settheMonth=()=>{
-  if(props.match.params.month){
-    console.log('props.match.params.month: ', props.match.params.month)
-    setMonth(props.match.params.month)
-  }else{
-    setMonth(date.getMonth()+1);
-  }
- }
+//  const settheMonth=()=>{
+//   if(props.match.params.month){
+//     console.log('props.match.params.month: ', props.match.params.month)
+//     setMonth(props.match.params.month)
+//   }else{
+//     setMonth(date.getMonth()+1);
+//   }
+//  }//settheMonth
+
  const fetchMonthData = async(month=date.getMonth()+1) =>{
   try{
    const data = await axios.get(`/exp/viewbymonth/${month}`);

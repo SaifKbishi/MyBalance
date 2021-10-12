@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Bar, Line, PolarArea} from 'react-chartjs-2';
+import {Bar, 
+// Line, PolarArea
+} from 'react-chartjs-2';
 import './Charts.css';
 
-const bgColorArray=[];
+// const bgColorArray=[];
 const chartColors = {
  red: 'rgb(255, 00, 00)',
  green: 'rgb(0, 204, 0)'

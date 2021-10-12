@@ -1,22 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import MonthViewInYear from '../MonthViewInYear/MonthViewInYear';
-import axios from 'axios' ;
+// import axios from 'axios' ;
 import './ExpensesTable.css';
 import {Table, Spinner} from 'react-bootstrap';
 import { useHistory  } from 'react-router-dom';
 
 
 const ExpensesTable =()=>{
- const [expense, setExpense] = useState([]);
+//  const [expense, setExpense] = useState([]);
  const [loading, setLoading] = useState(false);
  const history = useHistory();
 
- const abortController = new AbortController();
- const signal = abortController.signal;
+//  const abortController = new AbortController();
+//  const signal = abortController.signal;
  const fetchData = async() =>{
    try{
-     const data = await axios.get('/exp/allExpenses/', {signal:signal});
-     setExpense(data.data);
+    //  const data = await axios.get('/exp/allExpenses/', {signal:signal});
+    //  const data = await axios.get('/exp/allExpenses/');
+    //  setExpense(data.data);
      setLoading(true);
    }catch(error){
      console.log('could not fetch data', error);
@@ -26,7 +27,7 @@ const ExpensesTable =()=>{
  useEffect(()=>{  
   fetchData();
   return function cleanup(){
-    abortController.abort();
+    // abortController.abort();
   }
  },[]);
  
