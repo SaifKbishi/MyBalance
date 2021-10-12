@@ -9,26 +9,21 @@ const ExpenseEdit=(props)=>{
 // const ExpenseEdit=(history, match)=>{
 const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
 const [expense, setExpense] = useState(initialState);
-// const source = axios.CancelToken.source();
+const source = axios.CancelToken.source();
 
-  // const getExpenseItem = async ()=>{
-  //   try{
-  //     const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
-  //     // const response = await axios.get(`/exp/getExpenseByID/${match.params._id}`, {cancelToken: source.token});//get expense by ID
-  //     setExpense(response.data);
-  //   }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
-  // }//getExpenseItem
+  const getExpenseItem = async ()=>{
+    try{
+      const response = await axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token});//get expense by ID
+      // const response = await axios.get(`/exp/getExpenseByID/${match.params._id}`, {cancelToken: source.token});//get expense by ID
+      setExpense(response.data);
+    }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
+  }//getExpenseItem
 
   useEffect( ()=>{    
-    // getExpenseItem();
-    try{      
-      // setExpense(axios.get(`/exp/getExpenseByID/${props.match.params._id}`, {cancelToken: source.token}).data);
-      setExpense(axios.get(`/exp/getExpenseByID/${props.match.params._id}`).data);
-    }catch(error){if(axios.isCancel(error)){console.log('axios cancelled')}else{console.log('error editing: ', error)}}
-
-    // return () => {
-    //   source.cancel();
-    // }
+    getExpenseItem();
+    return () => {
+      source.cancel();
+    }
   },[props.match.params._id]);//useEffect
   // },[match.params._id]);//useEffect
 

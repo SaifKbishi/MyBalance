@@ -7,8 +7,7 @@ import { useHistory  } from 'react-router-dom';
 const MonthViewInYear =(props)=>{
  const [expense, setExpense] = useState([]);
  const date = new Date();
-//  const [month, setMonth] = useState(date.getMonth()+1);
- const [month] = useState(date.getMonth()+1);
+ const [month, setMonth] = useState(date.getMonth()+1);
 
  const fetchMonthData = async(month) =>{
   try{

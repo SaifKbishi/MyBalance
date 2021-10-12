@@ -25,14 +25,15 @@ function Navigation(){
     <Nav className="mr-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>
-      {currentUser && (<Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>)}
+      {/* {currentUser && (<Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>)}
       {currentUser && (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
       {currentUser && (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
-      {currentUser && (<Nav.Link href="/charts">Charts</Nav.Link>)}
-      {/* {  (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
+      {currentUser && (<Nav.Link href="/charts">Charts</Nav.Link>)} */}
+      {  (<Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>)}
+      {  (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
       {  (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
-      {  (<Nav.Link href="/charts">Charts</Nav.Link>)} */}
-      {/* {  (<Nav.Link href="/chartsOLD">Charts2</Nav.Link>)} */}
+      {  (<Nav.Link href="/charts">Charts</Nav.Link>)}
+  
     </Nav>
     <Nav>
     <div className='navbar-nav mr-auto'>
