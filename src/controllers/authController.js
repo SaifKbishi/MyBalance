@@ -86,9 +86,6 @@ exports.signin = (req, res)=>{
    
    let authorties =[];
    for(let i=0; i<user.roles.length; i++){
-     // console.log('87 auth.controller: ','\nZZZZ user: ',user
-     //                                   ,'\nCCCC user.roles[i]: ',user.roles[i]
-     //                                   ,'\nRRRR user.roles[i].username: ', user.roles[i].name)    
     authorties.push('ROLE_' +user.roles[i].name.toUpperCase());
    }
    res.status(200).send({

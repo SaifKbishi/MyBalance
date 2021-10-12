@@ -5,10 +5,6 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 const expRoute = require('./src/routes/expenseRoutes');
-// const authRoute = require('./src/routes/authRoutes');
-// const userRoute = require('./src/routes/userRoutes');
-// app.use('/exp', authRoute);
-// app.use('/exp', userRoute);
 app.use('/exp', expRoute);
 
 //models require goes here

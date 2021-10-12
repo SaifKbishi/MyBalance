@@ -12,14 +12,9 @@ module.exports = function(app){
   );
   next();
  });
- // app.get('/api/all', controller.allAccess);
- // app.get('/api/test/all', controller.allAccess);
- // app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard);
- // app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
 
  console.log('userRoutes') 
  app.get('/exp/all', userController.allAccess);
  app.get('/exp/user', [authJwt.verifyToken], userController.userBoard);
  app.get('/exp/admin', [authJwt.verifyToken, authJwt.isAdmin], userController.adminBoard);
-//  app.get('/api/test/admin', [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
 };
