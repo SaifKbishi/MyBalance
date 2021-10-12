@@ -25,7 +25,6 @@ function Navigation(){
     <Nav className="mr-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>
-      {  (<Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>)}
       {  (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
       {  (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
       {  (<Nav.Link href="/charts">Charts</Nav.Link>)}
