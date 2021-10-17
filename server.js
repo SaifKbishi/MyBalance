@@ -55,6 +55,7 @@ require('./src/routes/userRoutes')(app);
 // app.get("/",  (req, res) =>{ res.send('hello from the server')});
 
 const PORT = process.env.PORT || 3008;//this must be the same as in the client package.json =>   "proxy":"http://localhost:3008/",
+console.log('PORT: ',process.env.PORT)
 app.listen(PORT, () => {
   console.log(`Server is up and listening to PORT: ${PORT}`);
 });
