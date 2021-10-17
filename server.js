@@ -11,7 +11,6 @@ app.use('/exp', expRoute);
 
 //public dir for heroku. 
 const publicDirectory = path.join(__dirname, "build");
-// const publicDirectory = path.join(__dirname, "client/build"); //20211012
 app.use(express.static(publicDirectory));    //20211010 10:11 //this MUST stay unchanged
 
 // require('./src/db/mongoose');
@@ -49,7 +48,6 @@ function initial(){
 
 app.get('/*',  (req, res) =>{  
   res.sendFile(path.join(__dirname, 'build', 'index.html'));//20211017
-  // res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 require('./src/routes/authRoutes')(app);
 require('./src/routes/userRoutes')(app);
