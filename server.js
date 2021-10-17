@@ -12,7 +12,7 @@ app.use('/exp', expRoute);
 //public dir for heroku. 
 const publicDirectory = path.join(__dirname, "build");
 // const publicDirectory = path.join(__dirname, "client/build"); //20211012
-// app.use(express.static(publicDirectory));    //20211010 10:11
+app.use(express.static(publicDirectory));    //20211010 10:11 //this MUST stay unchanged
 
 // require('./src/db/mongoose');
 require('./src/config/mongoose');
@@ -23,8 +23,8 @@ const Role = db.role;
 initial();
 
 if (process.env.NODE_ENV === "production") {  
-  // app.use(express.static(path.join(__dirname, './build'))); 
-  app.use(express.static(publicDirectory)); 
+  app.use(express.static(path.join(__dirname, './build'))); 
+  // app.use(express.static(publicDirectory)); 
 }
 
 function initial(){
@@ -48,7 +48,8 @@ function initial(){
  }//initial
 
 app.get('/*',  (req, res) =>{  
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));//20211017
+  // res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 require('./src/routes/authRoutes')(app);
 require('./src/routes/userRoutes')(app);
