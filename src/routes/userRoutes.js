@@ -13,7 +13,6 @@ module.exports = function(app){
   next();
  });
 
- console.log('userRoutes') 
  app.get('/exp/all', userController.allAccess);
  app.get('/exp/user', [authJwt.verifyToken], userController.userBoard);
  app.get('/exp/admin', [authJwt.verifyToken, authJwt.isAdmin], userController.adminBoard);

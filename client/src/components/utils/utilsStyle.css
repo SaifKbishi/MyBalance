@@ -13,3 +13,7 @@ html,body{
 body{
  /* background-color: magenta !important; */
 }
+
+.form-check-label{
+  text-align: left;
+}

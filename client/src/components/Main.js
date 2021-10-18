@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MonthView from './MonthView/MonthView';
 import ExpenseEdit from './ExpenseEdit/ExpenseEdit';
-import ExpenseForm from './ExpenseForm/ExpenseForm';
+import ExpenseForm2 from './ExpenseForm/ExpenseForm2';
 import ExpensesTable from './ExpensesTable/ExpensesTable';
 import Charts from './Charts/Charts';
 // import ExpensesTable2 from './ExpensesTable/ExpensesTable2';
@@ -23,7 +23,8 @@ function Main() {
     <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
     <Route exact path={'/allExpenses/'} component={ExpensesTable}/>
     <Route exact path={'/charts/'} component={Charts}/>
-    <Route exact path={'/addExpense/'} component={ExpenseForm}/>
+    {/* <Route exact path={'/addExpense/'} component={ExpenseForm}/> */}
+    <Route exact path={'/addExpense/'} component={ExpenseForm2}/>
     <Route exact path={'/updateExpense/:_id/'} component={ExpenseEdit}/>    
     <Route exact path={'/login'} component={Login}/>
     <Route exact path={'/register'} component={Register}/>

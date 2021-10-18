@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Navigation/>
         <div className="container">
-          <h1>My Balance</h1>
+          <h4>My Balance</h4>
           <hr/>
           <Main />
         </div>

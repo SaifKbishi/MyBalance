@@ -3,12 +3,17 @@ import axios from 'axios';
 import './ExpenseEdit.css';
 import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
+import AuthService from "../../services/auth.service";
+
 import { Button } from "react-bootstrap";
 
 const ExpenseEdit=(props)=>{
 // const ExpenseEdit=(history, match)=>{
+console.log('12 ExpenseEdit' )
 const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
 const [expense, setExpense] = useState(initialState);
+const [showAdminBoard, setShowAdminBoard] = useState(false); //20211017
+const [currentUser, setCurrentUser] = useState(undefined); //20211017
 const source = axios.CancelToken.source();
 
   const getExpenseItem = async ()=>{
@@ -21,6 +26,11 @@ const source = axios.CancelToken.source();
 
   useEffect( ()=>{    
     getExpenseItem();
+    const user = AuthService.getCurrentUser();
+    if(user){
+      setCurrentUser(user);
+      setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));//ROLE_ADMIN //role_admin
+    }
 
     // return () => {
     //   source.cancel();
@@ -55,8 +65,10 @@ const source = axios.CancelToken.source();
   props.history.goBack();
  }
 
- return(
-  <div>
+ return(   
+  <>
+  {!currentUser && (<h6>You need to be logged-in in order to be able to Edit and expense</h6>)}
+  {currentUser && (<div>
     <h2>Editing {expense.name}</h2>
    <form className="expensesForm" onSubmit={handleEditSubmit}>
     <span className="radioBtns" onChange={handleChange}>{/*Radio buttons*/}    
@@ -89,8 +101,10 @@ const source = axios.CancelToken.source();
      <Button type="submit" variant="warning" value="Delete" className="btn btn-primary" onClick={(e)=>handleDelete(e)}>Delete</Button>     
     </div> 
    </form>
-   
-  </div>
+   </div>
+ )} 
+  </>
+ 
  );
 }
 
