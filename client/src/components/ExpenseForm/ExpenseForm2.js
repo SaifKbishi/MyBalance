@@ -12,7 +12,7 @@ const ExpenseForm=()=>{
  const [expense, setExpense] = useState(initialState);
 
  const handleChange = (e)=>{
-   console.log(e.target.value,' ', e.target.name)
+   console.log(e.target.value,' ', e.target.name);
   setExpense({...expense,[e.target.name]:e.target.value});
  }
  const handleSubmit=(e)=>{
@@ -40,35 +40,10 @@ const ExpenseForm=()=>{
       <TextInput divCN="form-group" labelText="Amount: " name="amount"  type="text" value={expense.amount} onChange={handleChange}  inputCN="form-control" required="required"/>
       <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
       <TextInput divCN="form-group categoryText" id="categoryText" labelText="Category : " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
-    </span>
-    {/* <span>
-    <label id="catLbl">
-    Category:
-    <select name="repeats"  onChange={handleChange}>
-      <option value="-1">Select Category</option>
-      <option value="1">Last Balance - יתרה</option>
-      <option value="2">Salary - משכורת</option>
-      <option value="3">Monthly Expenses - תשלומים קבועים</option>
-      <option value="6">Gas - דלק</option>
-      <option value="7">Food/Babay - מזון ותינוק</option>
-      <option value="8">Local Taxes - מ"מ ג'וליס</option>
-      <option value="9">Electricity - חשמל</option>
-      <option value="13">CC - תוספות אשראי</option>
-   </select>
-   </label>
-   </span> */}
-   {/* <span>
-    {data.categoriesData.map((cateItem, index)=>{
-      return(
-        <CheckBox name={cateItem.CategoryId} onChange={handleChange} key={index} inputId={`flexCheckChecked${cateItem.id}`} value={cateItem.id} labelText={cateItem.title}/>
-      )
-    })}
-   </span> */}
+    </span>    
    <span id="categoriesDataRadioBtns" onChange={handleChange}>
     {data.categoriesData.map((cateItem, index)=>{
-      return(
-        // <RadioButton2 divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="inlineRadioOptions"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
-        // <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
+      return(        
         <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={cateItem.id} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
       )
     })}

@@ -11,7 +11,7 @@ import data from '../utils/CategoriesData';
 
 const ExpenseEdit=(props)=>{
 // const ExpenseEdit=(history, match)=>{
-console.log('12 ExpenseEdit' )
+// console.log('14 ExpenseEdit' )
 const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'', expense:'expense', income:'income' };
 const [expense, setExpense] = useState(initialState);
 const [showAdminBoard, setShowAdminBoard] = useState(false); //20211017
@@ -41,7 +41,8 @@ const source = axios.CancelToken.source();
   // },[match.params._id]);//useEffect
 
  const handleChange = (e)=>{
-  setExpense({...expense,[e.target.name]:e.target.value});
+   console.log(e.target.value, e.target.name);
+   setExpense({...expense,[e.target.name]:e.target.value});
  }
 
  const handleEditSubmit=(e)=>{
@@ -84,26 +85,11 @@ const source = axios.CancelToken.source();
       <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
       <TextInput divCN="form-group" labelText="Category: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
     </span>
-    {/* <span>
-    <label id="catLbl">
-    Category: 
-    <select name="repeats"  onChange={handleChange}>
-      <option value="-1">Select Category</option>
-      <option value="1">Last Balance - יתרה</option>
-      <option value="2">Salary - משכורת</option>
-      <option value="3">Monthly Expenses - תשלומים קבועים</option>
-      <option value="6">Gas - דלק</option>
-      <option value="7">Food/Babay - מזון ותינוק</option>
-      <option value="8">Local Taxes - מ"מ ג'וליס</option>
-      <option value="9">Electricity - חשמל</option>
-      <option value="13">CC - תוספות אשראי</option>
-   </select>
-   </label>
-   </span> */}
+
    <span id="categoriesDataRadioBtns" onChange={handleChange}>
     {data.categoriesData.map((cateItem, index)=>{
       return(
-        <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
+        <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={cateItem.id} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
       )
     })}
    </span>
