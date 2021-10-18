@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ExpenseEdit.css';
 import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
+import RadioButton2 from '../utils/RadioButton2';
 import AuthService from "../../services/auth.service";
 import { Button } from "react-bootstrap";
 import CheckBox from '../utils/CheckBox';
@@ -83,7 +84,7 @@ const source = axios.CancelToken.source();
       <TextInput divCN="form-group" labelText="Description: " name="description"  type="text" value={expense.description} onChange={handleChange}  inputCN="form-control"/>
       <TextInput divCN="form-group" labelText="Category: " name="repeats"  type="text" value={expense.repeats} onChange={handleChange}  inputCN="form-control"/>
     </span>
-    <span>
+    {/* <span>
     <label id="catLbl">
     Category: 
     <select name="repeats"  onChange={handleChange}>
@@ -98,17 +99,15 @@ const source = axios.CancelToken.source();
       <option value="13">CC - תוספות אשראי</option>
    </select>
    </label>
-   </span>
-   <span>
+   </span> */}
+   <span id="categoriesDataRadioBtns" onChange={handleChange}>
     {data.categoriesData.map((cateItem, index)=>{
       return(
-        <CheckBox name={cateItem.CategoryId} onChange={handleChange} key={index} inputId={`flexCheckChecked${cateItem.id}`} value={cateItem.id} labelText={cateItem.title}/>
+        <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
       )
     })}
    </span>
-   {/* <div className="btn-group"> */}
     <div className="editFormButtons">
-     {/* <input type="submit" value="Submit" className="btn btn-primary" /> */}
      <Button type="submit" className="btn btn-primary" >Save</Button>{' '}     
      <Button type="submit" variant="warning" value="Delete" className="btn btn-primary" onClick={(e)=>handleDelete(e)}>Delete</Button>     
     </div> 

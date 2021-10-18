@@ -39,7 +39,7 @@
   margin-top: 30px;
 }
 input[type=radio] {
-  /* visibility: hidden; */
+  visibility: hidden;
   /* display: none; */
 }
 input[type=radio] + label {
@@ -75,4 +75,18 @@ input[type=radio]:focus + label {
 }
 .editFormButtons button{
   margin: 3% 2%
+}
+
+/*overriding style**/
+#categoriesDataRadioBtns{
+  display: flex!important; 
+  flex-direction: column!important; 
+}
+.form-check-input{
+  visibility: visible!important; 
+}
+.form-check-label{
+  border: none!important;
+  padding: 2px !important; 
+  margin-top: 0!important; ;
 }

@@ -5,8 +5,10 @@ const RadioButton2 =({divCN, inputType, inputID, name, value, labelID, htmlFor, 
 
  return(
    <div className="form-check form-check-inline">
-    <input className="form-check-input" type="radio" name={name} id={inputID} value={inputID}/>
-    <label className="form-check-label" htmlFor={htmlFor}>{labelText}</label>
+    <label className="form-check-label" >
+      <input className="form-check-input" type="radio" name={name} id={inputID} value={inputID}/>
+      {labelText}
+    </label>
   </div> 
  );
 }

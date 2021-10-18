@@ -41,7 +41,7 @@
   width: 100px;
   height: 100px;
 }
-input[type=radio] {
+#AddExpenseBtn input[type=radio] {
   visibility: hidden;
   /* display: none; */
 }

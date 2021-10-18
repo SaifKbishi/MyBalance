@@ -1,0 +1,47 @@
+/* radio buttons as buttons */
+.input-radio{
+  display: flex;
+  margin-right: 10px;
+  margin-top: 0px;
+  width: 100px;
+  height: 100px;
+}
+input[type=radio]  {
+  visibility: hidden;
+}
+
+input[type=radio] + label {
+  padding: 17px;
+  border-radius: 50%;
+  border: 1px solid #ddd; 
+}
+input[type=radio] + label:hover {
+  border: 1px solid blue;
+  cursor: pointer;
+}
+input[type=radio]:checked + label {
+  border: 2px solid blue;
+}
+input[type=radio]:focus + label {
+  border: 5px solid #880000;
+}
+.radioBtns{
+  margin: 0 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*overriding style**/
+#categoriesDataRadioBtns{
+  display: flex;
+  flex-direction: column;
+}
+.form-check-input{
+  visibility: visible!important; 
+}
+.form-check-label{
+  border: none!important;
+  padding: 2px !important; 
+  margin-top: 0!important;
+  cursor: pointer;
+}
