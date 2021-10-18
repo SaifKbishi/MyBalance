@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ExpenseForm2.css';
 import TextInput from '../utils/TextInput';
 import RadioButton from '../utils/RadioButton';
+import RadioButton2 from '../utils/RadioButton2';
 import CheckBox from '../utils/CheckBox';
 import data from '../utils/CategoriesData';
 
@@ -56,17 +57,43 @@ const ExpenseForm=()=>{
    </select>
    </label>
    </span>
-   <span>
+   {/* <span>
     {data.categoriesData.map((cateItem, index)=>{
       return(
-        <CheckBox name="repeats" onChange={handleChange} key={index} inputId={`flexCheckChecked${cateItem.id}`} value={cateItem.id} labelText={cateItem.title}/>
+        <CheckBox name={cateItem.CategoryId} onChange={handleChange} key={index} inputId={`flexCheckChecked${cateItem.id}`} value={cateItem.id} labelText={cateItem.title}/>
+      )
+    })}
+   </span> */}
+   <span id="categoriesDataRadioBtns">
+    {data.categoriesData.map((cateItem, index)=>{
+      return(
+        // <RadioButton2 divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="inlineRadioOptions"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
+        <RadioButton2 key={index} divCN="form-check form-check-inline" inputType="radio" onChange={handleChange} inputID={`inlineRadio${cateItem.id}`} name="repeats"  value={cateItem.id}  labelID="" htmlFor={`inlineRadio${cateItem.id}`} labelText={cateItem.title} /> 
       )
     })}
    </span>
-   <span>
-    <div className="btn-group" id="ExpenseFormSubmitBtn">
-     <input type="submit" value="Add expense" className="btn btn-primary" />
+   {/* <span> 
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+      <label class="form-check-label" for="inlineRadio1">Option one</label>
     </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+      <label class="form-check-label" for="inlineRadio2">Option Two</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"/>
+      <label class="form-check-label" for="inlineRadio3">Option tree</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"/>
+      <label class="form-check-label" for="inlineRadio4">Option four (disabled)</label>
+    </div>
+   </span> */}
+    <span>
+      <div className="btn-group" id="ExpenseFormSubmitBtn">
+      <input type="submit" value="Add expense" className="btn btn-primary" />
+      </div>
     </span>
    </form>
   </div>

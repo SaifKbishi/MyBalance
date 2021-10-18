@@ -1,14 +1,14 @@
 
 const data = {
   categoriesData:[
-    {id:1, title:'Last Balance - יתרה',},
-    {id:2, title:'Salary - משכורת',},
-    {id:3, title:'Monthly Expenses - תשלומים קבועים',},
-    {id:4, title:'Gas - דלק',},
-    {id:5, title:'Food/Babay - מזון ותינוק',},
-    {id:6, title:"Local Taxes - ממ ג'וליס",},
-    {id:7, title:'Electricity - חשמל',},
-    {id:8, title:'CC - תוספות אשראי',},
+    {id:1, title:'Last Balance - יתרה', CategoryId: 1,},
+    {id:2, title:'Salary - משכורת',CategoryId: 2,},
+    {id:3, title:'Monthly Expenses - תשלומים קבועים',CategoryId: 3,},
+    {id:6, title:'Gas - דלק',CategoryId: 6,},
+    {id:7, title:'Food/Babay - מזון ותינוק',CategoryId: 7,},
+    {id:8, title:"Local Taxes - ממ ג'וליס",CategoryId: 8,},
+    {id:9, title:'Electricity - חשמל',CategoryId: 9,},
+    {id:13, title:'CC - תוספות אשראי',CategoryId: 13,},
     
   ],
 }
