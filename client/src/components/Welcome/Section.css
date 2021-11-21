@@ -1,17 +1,36 @@
 .section{  
-  font-size: 30px;
+  font-size: 1.5rem;
   display: flex;
   height: 80vh;
   justify-content:center;
   align-items:center;
+  padding: 10%;
 }
 
 .title_image{
   background-color: #1E5128;
+  flex-direction: row;
 }
 .image_title{
   background-color: #4E9F3D;
+  flex-direction: row-reverse;
+}
+.title_image1{
+  background-color: #FFF;
+  flex-direction: row;
+}
+.image_title1{
+  background-color: #D8E9A8;
+  flex-direction: row-reverse;
 }
 .footer{
   background-color: #191A19;
+  color: #D8E9A8;
+}
+.inSection{
+  width: 50%;
+}
+
+.inSectionImage{
+  max-width: 60%;
 }
