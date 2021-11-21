@@ -43,7 +43,7 @@ const MonthViewInYear =(props)=>{
  return(
   <div>
    <Table bordered hover size="sm" options={options}>      
-    <tbody>
+    <tbody >
      {expense.map(renderAnExpense)}
     </tbody>  
    </Table>

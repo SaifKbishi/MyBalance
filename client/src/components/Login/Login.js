@@ -67,6 +67,7 @@ const Login = (props)=>{
      )}
     </form>
    </div>
+   <h5>Try <b><i>sk1982</i></b> as username and PW.</h5>
   </div>
  );
 }

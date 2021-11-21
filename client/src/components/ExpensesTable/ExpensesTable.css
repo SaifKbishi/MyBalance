@@ -37,7 +37,10 @@
  width:50px;
  float: right;
 }
-
+.thead-dark{
+    background-color: green;
+    background: green;
+}
 .expensesTable .expensesItems{
  display: flex;
  justify-content: space-between;

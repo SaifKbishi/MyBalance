@@ -1,14 +1,12 @@
 .yellow{
  background: yellow;
+ /* opacity:0.8 */
 }
 .green{
  background: green;
 }
 .blue{
  background: blue;
-}
-.yellow{
- background: yellow;
 }
 .green{
  background: green;

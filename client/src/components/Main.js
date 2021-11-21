@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import Register from './Register/Register';
+import Welcome from './Welcome/Welcome';
 import BoardUser from './BoardRoles/BoardUser';
 import BoardAdmin  from './BoardRoles/BoardAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +19,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Main() {
  return(
    <Switch>
-    <Route exact path={['/', '/Home']} component={Home}/>
+    <Route exact path={['/', '/Welcome']} component={Welcome}/>
+    <Route exact path={['/Home']} component={Home}/>
     <Route exact path={'/viewbymonth/'} component={MonthView}/>
     <Route exact path={'/viewbymonth/:month'} component={MonthView}/>
     <Route exact path={'/allExpenses/'} component={ExpensesTable}/>

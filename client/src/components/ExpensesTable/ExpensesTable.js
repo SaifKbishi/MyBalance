@@ -46,8 +46,8 @@ const ExpensesTable =()=>{
  return(
   <div className="yearView">
     {loading ? (    
-     <Table bordered hover size="sm" variant="dark">
-    <thead>
+     <Table bordered hover size="sm" variant="light">
+    <thead className="thead-dark"> 
       <tr className="monthDropDown" onClick={selectMonth}>        
         <th value="1">January</th>
         <th value="2">February</th>

@@ -93,7 +93,7 @@ const MonthView =(props)=>{
    </select>
    <hr/>
      <Table bordered hover size="sm" options={options}>
-      <thead>
+      <thead >
         <tr>
          <th>X</th>
          <th>Expense Name</th>

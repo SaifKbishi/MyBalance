@@ -1,0 +1,17 @@
+.section{  
+  font-size: 30px;
+  display: flex;
+  height: 80vh;
+  justify-content:center;
+  align-items:center;
+}
+
+.title_image{
+  background-color: #1E5128;
+}
+.image_title{
+  background-color: #4E9F3D;
+}
+.footer{
+  background-color: #191A19;
+}

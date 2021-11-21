@@ -23,14 +23,15 @@ function Navigation(){
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
+      {/* <Nav.Link href="/">welcome</Nav.Link> */}
+      <Nav.Link href="/home">Home</Nav.Link>
       {/* <Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>
       {  (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
       {  (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
       {  (<Nav.Link href="/charts">Charts</Nav.Link>)} */} 
       
       {currentUser && (<Nav.Link href="/addExpense" to="/addExpense">New Expense</Nav.Link>)}
-      {currentUser && (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)}
+      {/* {currentUser && (<Nav.Link href="/viewbymonth">Month View</Nav.Link>)} */}
       {currentUser && (<Nav.Link href="/allExpenses">Year View</Nav.Link>)}
       {currentUser && (<Nav.Link href="/charts">Charts</Nav.Link>)}  
 
