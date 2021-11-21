@@ -1,15 +1,17 @@
 .section{  
   font-size: 1.5rem;
   display: flex;
-  height: 80vh;
+  height: 60vh;
   justify-content:center;
   align-items:center;
   padding: 10%;
+  margin: 10px;
 }
 
 .title_image{
   background-color: #1E5128;
   flex-direction: row;
+  color: #D8E9A8;
 }
 .image_title{
   background-color: #4E9F3D;
@@ -26,6 +28,9 @@
 .footer{
   background-color: #191A19;
   color: #D8E9A8;
+  padding-bottom: 10px;
+  bottom: 50px;
+  
 }
 .inSection{
   width: 50%;
@@ -33,4 +38,10 @@
 
 .inSectionImage{
   max-width: 60%;
+}
+.sectionLogin{
+  font: italic bold 3rem Georgia, Serif;
+  text-shadow: -4px 3px 0 #D8E9A8, -14px 7px 0 #4E9F3D;
+  text-decoration: none;
+  color:inherit;
 }

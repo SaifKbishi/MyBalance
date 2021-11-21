@@ -1,3 +1,6 @@
+.expFormContainer{
+  padding-top: 30px;
+}
 .expensesForm{
   display: flex;
   flex-direction: row;

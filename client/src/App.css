@@ -4,7 +4,19 @@ html,body{
   }
 .App {
   text-align: center;
+  background-image: linear-gradient(
+    to right,
+    #1E5128,
+    #4E9F3D,
+    #D8E9A8,
+    green
+  );
+
 }
 .container >h1{
   padding-top: 50px;
+}
+
+.container{
+  min-height: 100vh;
 }

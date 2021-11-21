@@ -1,6 +1,10 @@
 .homepage{
- display: flex;
+  display: flex;
+  flex-direction: column;
 }
 .homeLogin{
   text-decoration: none;
+}
+.intro{
+  padding: 15px 0;
 }
