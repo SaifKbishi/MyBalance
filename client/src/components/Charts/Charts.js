@@ -48,9 +48,9 @@ const chart= async()=>{
         label: 'Month Blanace',
         data: monthesSummArray_3,
         backgroundColor: bgColorArray,
-        borderWidth: 4
+        borderWidth: 4,
       }
-      ]
+      ],      
     })
 
   })
@@ -64,26 +64,37 @@ const chart= async()=>{
  return (
    <div>
     <div>
-      aside div
+      {/* aside div taht should be added later */}
     </div>
     <div className="charts">
       <Bar
         data={chartData}      
-        options={
-        {
+        options={          
+        {          
           title:{
             display: true,
             text:'balance after expenses',
-            fontSize:20
+            fontSize:200,
+            fontColor: 'blue',
           },
           plugins:{
             legend:{
               display: true,
-              position:'right'
+              position:'right',               
             }
-          }        
-        }      
+          },
+          ticks:{
+            font:{
+              color:'blue',
+              fontColor: 'blue',
+              size: 15,
+              backgroundColor: 'rgba(169, 205, 221, 0.8)',
+            }
+            
+          }
         }
+        }
+        
       />
     </div>
   </div>

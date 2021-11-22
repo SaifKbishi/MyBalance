@@ -6,6 +6,7 @@ import RadioButton from '../utils/RadioButton';
 import RadioButton2 from '../utils/RadioButton2';
 import CheckBox from '../utils/CheckBox';
 import data from '../utils/CategoriesData';
+import CategoryForm from '../CategoryForm/CategoryForm'
 
 const ExpenseForm=()=>{
  const initialState = {name:'', amount:'', description:'', repeats:'', date:'', expenseType:'expense', expense:'expense', income:'income' };
@@ -54,6 +55,8 @@ const ExpenseForm=()=>{
       </div>
     </span>
    </form>
+   <hr/>
+   {/* <CategoryForm/> */}
   </div>
  );
 }
