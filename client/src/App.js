@@ -13,8 +13,8 @@ function App() {
       <Router>
         <Navigation/>
         <div className="container">
-          <h4>My Balance</h4>
-          <hr/>
+          <h4 style={{paddingTop:20, fontWeight:'bold'}}> My Balance</h4>
+          <div className="neonEffect"></div>
           <Main />
         </div>
       </Router>  

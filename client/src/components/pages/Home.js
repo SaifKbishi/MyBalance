@@ -6,6 +6,7 @@ import ExpensesTable from '../ExpensesTable/ExpensesTable';
 import AuthService from "../../services/auth.service";
 import { Link } from 'react-router-dom';
 import './home.css'
+import '../utils/utilsStyle.css'
 
 function Home(){
  const [currentUser, setCurrentUser] = useState(undefined);
@@ -24,6 +25,7 @@ function Home(){
   </p>
    {currentUser && (<ExpenseForm2 />)}
    <hr/>
+   {/* <div className="neonEffect"></div> */}
    <ExpensesTable />
    {/* <ExpensesTable2 /> */}
   </div>
