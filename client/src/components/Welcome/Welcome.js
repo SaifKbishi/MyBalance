@@ -12,10 +12,10 @@ const Welcome = () => {
   return (
     <div style={{paddingBottom: 20, paddingTop:20}}>
       <Section class_Name={'title_image section'}
-        tilte={'Badget Smart, Badgt Better. Take Control of Your Money'} 
+        tilte={'Badget Smart, Badget Better. Take Control of Your Money'} 
         description={'Stop living paycheck-to-paycheck, get out of debt, and save more money'} 
         imageSrc={budgetSmart}
-        imageAlt={'Badget Smart, Badgt Better. Take Control of Your Money'}
+        imageAlt={'Badget Smart, Badget Better. Take Control of Your Money'}
         linkTo={'/login'}
         linkToLable={'Login'}
         />        
