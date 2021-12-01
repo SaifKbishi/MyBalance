@@ -46,6 +46,7 @@ function initial(){
  }//initial
 
 app.get('/*',  (req, res) =>{  
+  // res.sendFile(path.join(__dirname, 'build', 'index.html'));//20211017
   res.sendFile(path.join(__dirname, 'build', 'index.html'));//20211017
 });
 require('./src/routes/authRoutes')(app);
